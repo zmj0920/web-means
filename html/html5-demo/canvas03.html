@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+body{
+   text-align: center
+}
+
+</style>
+<body onload="darw()">
+    <script>
+        function darw() {
+            var d1 = document.getElementById("d1");
+            var cxt = d1.getContext("2d");
+            cxt.font = "48px serif";
+            cxt.textBaseline = "top";
+            cxt.fillStyle = "#0ff"
+            //cxt.textAlign="center"
+            // cxt.textAlign = "left";
+            cxt.transform(1, 1, 0, 1, 0, 0);
+            // cxt.fillRect(0, 0, 100, 100);
+            cxt.strokeText("Hello world", 0, 100);
+            cxt.fillText("how are you ", 10, 50);
+
+        }
+
+    </script>
+    <canvas id="d1" width="1000" height="500">
+
+    </canvas>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body onload="draw()">
+    <script>
+    function draw() {
+            var ctx = document.getElementById('d1').getContext('2d');
+            var img = new Image();
+            img.onload = function(){
+              ctx.drawImage(img,0,0);
+              ctx.beginPath();
+              ctx.moveTo(30,96);
+              ctx.lineTo(70,66);
+              ctx.lineTo(103,76);
+              ctx.lineTo(170,15);
+              ctx.stroke();
+            }
+            img.src = 'img/apple.png';
+          }
+
+
+        // function darw() {
+        //     var d1 = document.getElementById("d1");
+        //     var cxt = d1.getContext("2d");
+        //     var img = new Image();
+        //     img.onload = function () {
+        //         ctx.drawImage(img, 0, 0);
+        //         ctx.beginPath();
+        //         ctx.moveTo(30, 96);
+        //         ctx.lineTo(70, 66);
+        //         ctx.lineTo(103, 76);
+        //         ctx.lineTo(170, 15);
+        //         ctx.stroke();
+        //     }
+        //     //    imgs.src="img/apple.png";
+        //     img.src = 'data:image/gif;base64,R0lGODlhCwALAIAAAAAA3pn/ZiH5BAEAAAEALAAAAAALAAsAAAIUhA+hkcuO4lmNVindo7qyrIXiGBYAOw==';
+        // }
+
+    </script>
+    <canvas width="1000" height="500" id="d1">
+
+
+    </canvas>
+</body>
+
+</html>

@@ -1,0 +1,166 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="http://www.softwhy.com/" />
+<title>蚂蚁部落</title>
+<style>
+ #canvas {
+  display: block;
+  margin: 20px auto;
+}
+</style>
+<script>
+window.onload = function () {
+  var colors = ["#FFA54F", "#7CCD7C", "#836FFF"];
+  var canvas = document.getElementById("canvas");
+  var ctx = canvas.getContext("2d");
+  ctx.drawCircle = function (x, y, value) {
+    if (0 == value) return;
+      var color = colors[value % 10 - 1];
+      this.strokeStyle = color;
+      this.fillStyle = color;
+  
+      this.beginPath();
+      this.arc(x, y, 20, 2 * Math.PI, 0, false);
+      this.closePath();
+      this.stroke();
+      if (value > 10) {
+        this.fill();
+      }
+    }
+  
+    // 初始化圆
+    var circles = [];
+    for (var col = 0; col < 12; col++) {
+      var arr = [];
+      for (var row = 0; row < 12; row++) {
+        var value = parseInt(Math.random() * colors.length) + 1;
+        arr.push(value);
+      }
+      circles.push(arr);
+    }
+  
+  
+    var search_stack = [];
+    var search_result = [];
+    canvas.addEventListener("mousemove", function (event) {
+      var col = parseInt((event.pageX - canvas.offsetLeft) / 40);
+      var row = parseInt((event.pageY - canvas.offsetTop) / 40);
+      if (0 == circles[col][row]) return;
+  
+      clean();
+      search_stack.push({ row: row, col: col, value: circles[col][row] });
+      search();
+      recovery();
+    }, false);
+  
+    // 清空，还原
+    function clean() {
+      if (search_result.length > 1) {
+        search_result.forEach(function (item) {
+          circles[item.col][item.row] -= 10;
+        });
+      }
+  
+      search_stack = [];
+      search_result = [];
+    }
+  
+    // 四邻域递归搜索
+    function search() {
+      if (search_stack.length == 0) return;
+      var item = search_stack.pop();
+      var value = item.value;
+      var col = item.col;
+      var row = item.row;
+  
+      circles[col][row] += 10;
+      search_result.push({ row: row, col: col });
+  
+      // 上
+      if (row > 0 && circles[col][row - 1] != 0 && circles[col][row - 1] < 10 && circles[col][row - 1] == value) {
+        search_stack.push({ row: row - 1, col: col, value: circles[col][row - 1] });
+      }
+  
+      // 下
+      if (row < 11 && circles[col][row + 1] != 0 && circles[col][row + 1] < 10 && circles[col][row + 1] == value) {
+        search_stack.push({ row: row + 1, col: col, value: circles[col][row + 1] });
+      }
+  
+      // 左
+      if (col > 0 && circles[col - 1][row] != 0 && circles[col - 1][row] < 10 && circles[col - 1][row] == value) {
+        search_stack.push({ row: row, col: col - 1, value: circles[col - 1][row] });
+      }
+  
+      // 右
+      if (col < 11 && circles[col + 1][row] != 0 && circles[col + 1][row] < 10 && circles[col + 1][row] == value) {
+        search_stack.push({ row: row, col: col + 1, value: circles[col + 1][row] });
+      }
+  
+      search();
+    }
+  
+    function recovery() {
+      if (search_result.length == 1) {
+        circles[search_result[0].col][search_result[0].row] -= 10;
+      }
+    }
+  
+    canvas.addEventListener("mousedown", function (event) {
+      if (search_result.length < 2) return;
+  
+      // 等于0相当于删除该元素
+      for (var col = 0; col < 12; col++) {
+        for (var row = 0; row < 12; row++) {
+          if (circles[col][row] > 10) {
+            circles[col][row] = 0;
+          }
+        }
+      }
+      search_result = [];
+  
+      // 下移
+      for (var col = 0; col < 12; col++) {
+        var temp_row = 11;
+        for (var row = 11; row >= 0; row--) {
+          if (circles[col][row] != 0) {
+            circles[col][temp_row] = circles[col][row];
+            temp_row--;
+          }
+        }
+        for (var i = 0; i <= temp_row; i++) {
+          circles[col][i] = 0;
+        }
+      }
+  
+      // 左移
+      for (var col = 0; col < 11; col++) {
+        if (circles[col][11] == 0) {
+          var target_col = col + 1;
+          while (target_col < 11 && circles[target_col][11] == 0) target_col++;
+          if (target_col > 11) break;
+          for (var row = 0; row < 12; row++) {
+            circles[col][row] = circles[target_col][row];
+            circles[target_col][row] = 0;
+          }
+        }
+      }
+  
+    }, false);
+  
+    setInterval(function () {
+      ctx.clearRect(0, 0, 480, 480);
+      for (var col = 0; col < 12; col++) {
+        for (var row = 0; row < 12; row++) {
+          ctx.drawCircle(20 + col * 40, 20 + row * 40, circles[col][row]);
+        }
+      }
+    }, 33, false);
+  }
+</script>
+</head>
+<body>
+<canvas id="canvas" width="480" height="480"></canvas>
+</body>
+</html>

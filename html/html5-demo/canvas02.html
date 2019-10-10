@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body onload="draw()">
+    <script>
+        function draw() {
+            var d1 = document.getElementById("d1");
+            var cxt = d1.getContext("2d");
+            // cxt.beginPath();
+            // cxt.moveTo(70, 40);
+            // context.arcTo(x1,y1,x2,y2,r);
+           // cxt.arcTo(150, 20, 150, 70, 50); // Create an arc
+            // 75 37 20 62  75 120 
+            //110 102 130 25 75 40 
+            // cxt.quadraticCurveTo(70,30,200,20);
+            // cxt.bezierCurveTo(75,37,70,25,50,25);
+            roundedRect(cxt,12,12,150,150,15);
+            cxt.stroke();
+            //cxt.fill();
+
+
+
+
+
+        }
+
+        function roundedRect(ctx, x, y, width, height, radius) {
+            ctx.beginPath();
+            ctx.moveTo(x, y + radius);
+            ctx.lineTo(x, y + height - radius);
+            ctx.quadraticCurveTo(x, y + height, x + radius, y + height);
+            ctx.lineTo(x + width - radius, y + height);
+            ctx.quadraticCurveTo(x + width, y + height, x + width, y + height - radius);
+            ctx.lineTo(x + width, y + radius);
+            ctx.quadraticCurveTo(x + width, y, x + width - radius, y);
+            ctx.lineTo(x + radius, y);
+            ctx.quadraticCurveTo(x, y, x, y + radius);
+            ctx.stroke();
+        }
+    </script>
+    <canvas id="d1" width="500" height="500">
+
+
+    </canvas>
+</body>
+
+</html>

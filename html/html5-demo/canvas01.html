@@ -1,0 +1,40 @@
+<html>
+
+<head>
+    <script type="application/javascript">
+        function draw() {
+            var canvas = document.getElementById("canvas");
+            var d1 = document.getElementById("d1").getContext("2d");
+            if (canvas.getContext) {
+                var ctx = canvas.getContext("2d");
+                //绘制填充矩形
+                ctx.fillRect(0, 0, 150, 150)
+                //清除指定矩形区域，让清除部分完全透明
+                ctx.clearRect(20, 20, 110, 110)
+                //绘制一个矩形边框
+                ctx.strokeRect(40, 40, 70, 70)
+                //新建路径生成之后，图形绘制命令指向到生成路径
+                d1.beginPath();
+                // 0,0 0,100 ,100,0 100,100
+                d1.moveTo(0, 0);
+                d1.lineTo(0, 100);
+                d1.lineTo(100, 100);
+                d1.lineTo(100, 0);
+                //通过填充路径的内容区域生成实心的图形
+                // d1.fill();
+                // 空心矩形
+                d1.closePath();
+                d1.stroke();
+            }
+        }
+    </script>
+</head>
+
+<body onload="draw();">
+    <canvas id="canvas" width="150" height="150"></canvas>
+    <br>
+    <canvas id="d1" width="150" height="150"></canvas>
+    <br>
+</body>
+
+</html>
