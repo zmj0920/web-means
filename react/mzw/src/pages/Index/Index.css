@@ -1,0 +1,11 @@
+/* For demo */
+
+.ant-carousel .slick-slide {
+  height: 400px;
+  width: 100%;
+}
+
+.ant-carousel .slick-slide img {
+  height: 400px;
+  width: 100%;
+}
