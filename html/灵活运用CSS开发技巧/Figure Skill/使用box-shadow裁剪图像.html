@@ -1,0 +1,50 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CodePen - 【iCSS：图形】使用box-shadow裁剪图像</title>
+    <link rel="stylesheet" href="./reset.css">
+    <style>
+        .img-cliper {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .img-cliper img {
+            width: 400px;
+        }
+
+        .img-cliper i {
+            position: absolute;
+            left: 50px;
+            top: 30px;
+            border-radius: 100%;
+            width: 100px;
+            height: 50px;
+            box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.5);
+        }
+
+        .img-cliper .mask {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+        }
+    </style>
+</head>
+
+<body translate="no">
+    <div class="bruce flex-ct-x">
+        <div class="img-cliper">
+            <img src="https://yangzw.vip/static/codepen/gz.jpg">
+            <div class="mask">
+                <i></i>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

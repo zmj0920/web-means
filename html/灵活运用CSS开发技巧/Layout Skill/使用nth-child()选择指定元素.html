@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CodePen - 【iCSS：布局】使用:nth-child()选择指定元素</title>
+    <link rel="stylesheet" href="./reset.css">
+    <style>
+        .specified-scope {
+            width: 300px;
+        }
+
+        .specified-scope li {
+            padding: 0 20px;
+            height: 40px;
+            line-height: 40px;
+            color: #fff;
+        }
+
+        .specified-scope li:nth-child(odd) {
+            background-color: #f66;
+        }
+
+        .specified-scope li:nth-child(even) {
+            background-color: #66f;
+        }
+
+        .specified-scope li:nth-child(n+6):nth-child(-n+10) {
+            background-color: #3c9;
+        }
+    </style>
+    <script>
+        window.console = window.console || function (t) { };
+    </script>
+    <script>
+        if (document.location.search.match(/type=embed/gi)) {
+            window.parent.postMessage("resize", "*");
+        }
+    </script>
+</head>
+
+<body translate="no">
+    <div class="bruce flex-ct-x">
+        <ul class="specified-scope">
+            <li>10001</li>
+            <li>10002</li>
+            <li>10003</li>
+            <li>10004</li>
+            <li>10005</li>
+            <li>10006</li>
+            <li>10007</li>
+            <li>10008</li>
+            <li>10009</li>
+            <li>10010</li>
+        </ul>
+    </div>
+
+
+</body>
+
+</html>

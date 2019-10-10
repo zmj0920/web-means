@@ -1,0 +1,66 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CodePen - 【iCSS：图形】使用mask雕刻镂空背景</title>
+    <link rel="stylesheet" href="./reset.css">
+    <style>
+        .bruce {
+            overflow: hidden;
+        }
+
+        .bruce::after {
+            position: absolute;
+            left: -20px;
+            right: -20px;
+            top: -20px;
+            bottom: -20px;
+            background: url("https://yangzw.vip/static/codepen/mask-bg.jpg") no-repeat center/cover;
+            -webkit-filter: blur(10px);
+            filter: blur(10px);
+            content: "";
+        }
+
+        .mask-layer {
+            position: relative;
+            z-index: 9;
+            width: 600px;
+            height: 300px;
+            background: url("https://yangzw.vip/static/codepen/mask-text.jpg") left center/150% auto;
+            -webkit-mask: url("https://yangzw.vip/static/codepen/logo-netease.svg") center/cover;
+            mask: url("https://yangzw.vip/static/codepen/logo-netease.svg") center/cover;
+            -webkit-animation: move 10s infinite;
+            animation: move 10s infinite;
+        }
+
+        @-webkit-keyframes move {
+            0% {
+                background-position-x: 0;
+            }
+
+            50% {
+                background-position-x: 100%;
+            }
+        }
+
+        @keyframes move {
+            0% {
+                background-position-x: 0;
+            }
+
+            50% {
+                background-position-x: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body translate="no">
+    <div class="bruce pr flex-ct-x">
+        <div class="mask-layer"></div>
+    </div>
+
+
+</body>
+
+</html>

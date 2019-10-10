@@ -1,0 +1,53 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CodePen - 【iCSS：色彩】使用linear-gradient控制文本渐变</title>
+    <link rel="stylesheet" href="./reset.css">
+    <style>
+        .gradient-text {
+            background-image: linear-gradient(90deg, #f66, #f90);
+            -webkit-background-clip: text;
+            background-clip: text;
+            line-height: 60px;
+            font-size: 60px;
+            -webkit-animation: hue 5s linear infinite;
+            animation: hue 5s linear infinite;
+            -webkit-text-fill-color: transparent;
+        }
+
+        @-webkit-keyframes hue {
+            from {
+                -webkit-filter: hue-rotate(0);
+                filter: hue-rotate(0);
+            }
+
+            to {
+                -webkit-filter: hue-rotate(-1turn);
+                filter: hue-rotate(-1turn);
+            }
+        }
+
+        @keyframes hue {
+            from {
+                -webkit-filter: hue-rotate(0);
+                filter: hue-rotate(0);
+            }
+
+            to {
+                -webkit-filter: hue-rotate(-1turn);
+                filter: hue-rotate(-1turn);
+            }
+        }
+    </style>
+</head>
+
+<body translate="no">
+    <div class="bruce flex-ct-x">
+        <h1 class="gradient-text">Full Stack Developer</h1>
+    </div>
+
+
+</body>
+
+</html>

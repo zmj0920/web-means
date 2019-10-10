@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>CodePen - 【iCSS：布局】使用object-fit规定图像尺寸</title>
+<style>
+    h1 {
+        line-height: 50px;
+        font-weight: bold;
+        font-size: 30px;
+        color: #f66;
+    }
+
+    .image-size {
+        display: flex;
+        justify-content: space-between;
+        width: 1000px;
+        height: 300px;
+    }
+
+    .image-size li {
+        width: 200px;
+        list-style: none;
+    }
+
+    .image-size h3 {
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    .image-size img {
+        width: 100%;
+        height: 260px;
+        background-color: #3c9;
+    }
+
+    .image-size img.cover {
+        -o-object-fit: cover;
+        object-fit: cover;
+    }
+
+    .image-size img.contain {
+        -o-object-fit: contain;
+        object-fit: contain;
+    }
+
+    .image-size img.fill {
+        -o-object-fit: fill;
+        object-fit: fill;
+    }
+
+    .image-size img.scale-down {
+        -o-object-fit: scale-down;
+        object-fit: scale-down;
+    }
+</style>
+</head>
+
+<body translate="no">
+    <div class="bruce flex-ct-y">
+        <h1>我家乖狗狗：AB</h1>
+        <ul class="image-size">
+            <li>
+                <h3>Cover</h3>
+                <img src="https://yangzw.vip/static/codepen/ab-1.jpg" class="cover">
+            </li>
+            <li>
+                <h3>Contain</h3>
+                <img src="https://yangzw.vip/static/codepen/ab-1.jpg" class="contain">
+            </li>
+            <li>
+                <h3>Fill</h3>
+                <img src="https://yangzw.vip/static/codepen/ab-2.jpg" class="fill">
+            </li>
+            <li>
+                <h3>ScaleDown</h3>
+                <img src="https://yangzw.vip/static/codepen/ab-2.jpg" class="scale-down">
+            </li>
+        </ul>
+    </div>
+
+
+</body>
+
+</html>

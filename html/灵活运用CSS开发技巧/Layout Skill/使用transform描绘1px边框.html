@@ -1,0 +1,75 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CodePen - 【iCSS：布局】使用transform描绘1px边框</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .bruce {
+            height: 100vh;
+        }
+
+        .flex-ct-y {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .onepx-border {
+            margin-top: 10px;
+            width: 200px;
+            height: 80px;
+            cursor: pointer;
+            line-height: 80px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 50px;
+            color: #f66;
+        }
+
+        .onepx-border:first-child {
+            margin-top: 0;
+        }
+
+        .normal {
+            border: 1px solid #f66;
+            transform: scale(1);
+        }
+
+        .thin {
+            position: relative;
+        }
+
+        .thin::after {
+            position: absolute;
+            left: 0;
+            top: 0;
+            border: 1px solid #f66;
+            width: 200%;
+            height: 200%;
+            content: "";
+            -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+            -webkit-transform-origin: left top;
+            transform-origin: left top;
+        }
+    </style>
+</head>
+
+<body translate="no">
+    <div class="bruce flex-ct-y">
+        <div class="onepx-border normal">1px</div>
+        <div class="onepx-border thin">0.5px</div>
+    </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CodePen - 【iCSS：行为】使用pointer-events禁用事件触发</title>
+    <link rel="stylesheet" href="./reset.css">
+    <style>
+        .disabled-trigger {
+            padding: 0 20px;
+            border-radius: 10px;
+            height: 40px;
+            background-color: #66f;
+            pointer-events: none;
+            line-height: 40px;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body translate="no">
+    <div class="bruce flex-ct-x">
+        <a class="disabled-trigger" href="https://www.baidu.com">点我</a>
+    </div>
+    <script>
+        document.getElementsByClassName("disabled-trigger")[0].addEventListener("click", () => alert("Hello World"));
+              //# sourceURL=pen.js
+    </script>
+
+
+</body>
+
+</html>

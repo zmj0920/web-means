@@ -1,0 +1,115 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CodePen - 【iCSS：布局】使用overflow-x排版横向列表</title>
+    <style>
+        .horizontal-list {
+            overflow: hidden;
+            width: 300px;
+            height: 100px;
+        }
+
+        .horizontal-list ul {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            overflow-x: scroll;
+            cursor: pointer;
+        }
+
+        .horizontal-list ul::-webkit-scrollbar {
+            height: 10px;
+        }
+
+        .horizontal-list ul::-webkit-scrollbar-track {
+            background-color: #f0f0f0;
+        }
+
+        .horizontal-list ul::-webkit-scrollbar-thumb {
+            border-radius: 5px;
+            background-color: #f66;
+        }
+
+        .horizontal-list li {
+            list-style: none;
+            overflow: hidden;
+            margin-left: 10px;
+            height: 90px;
+            background-color: #66f;
+            line-height: 90px;
+            text-align: center;
+            font-size: 16px;
+            color: #fff;
+        }
+
+        .horizontal-list li:first-child {
+            margin-left: 0;
+        }
+
+        .flex ul {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+        }
+
+        .flex li {
+            flex-shrink: 0;
+            flex-basis: 90px;
+        }
+
+        .inline {
+            margin-top: 10px;
+            height: 105px;
+        }
+
+        .inline ul {
+            
+            overflow-y: hidden;
+            white-space: nowrap;
+        }
+
+        .inline li {
+            display: inline-block;
+            width: 90px;
+        }
+    </style>
+</head>
+
+<body >
+ 
+        <div class="horizontal-list flex">
+            <ul>
+                <li>Alibaba</li>
+                <li>Tencent</li>
+                <li>Baidu</li>
+                <li>Jingdong</li>
+                <li>Ant</li>
+                <li>Netease</li>
+                <li>Meituan</li>
+                <li>ByteDance</li>
+                <li>360</li>
+                <li>Sina</li>
+            </ul>
+        </div>
+        <div class="horizontal-list inline">
+            <ul>
+                <li>Alibaba</li>
+                <li>Tencent</li>
+                <li>Baidu</li>
+                <li>Jingdong</li>
+                <li>Ant</li>
+                <li>Netease</li>
+                <li>Meituan</li>
+                <li>ByteDance</li>
+                <li>360</li>
+                <li>Sina</li>
+            </ul>
+        </div>
+
+
+</body>
+
+</html>

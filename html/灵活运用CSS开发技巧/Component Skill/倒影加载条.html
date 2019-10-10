@@ -1,0 +1,145 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CodePen - 【iCSS：组件】倒影加载条</title>
+    <link rel="stylesheet" href="./reset.css">
+    <style>
+        .reflect-loading {
+            display: flex;
+            height: 100px;
+            -webkit-box-reflect: below 0 linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.7));
+        }
+
+        .reflect-loading li {
+            width: 20px;
+        }
+
+        .reflect-loading li:nth-child(1) {
+            background-color: #0099ff;
+            -webkit-animation: rotate 3s cubic-bezier(0.81, 0.04, 0.4, 0.7) infinite;
+            animation: rotate 3s cubic-bezier(0.81, 0.04, 0.4, 0.7) infinite;
+            -webkit-animation-delay: 0ms;
+            animation-delay: 0ms;
+        }
+
+        .reflect-loading li:nth-child(2) {
+            background-color: #0b93ff;
+            -webkit-animation: rotate 3s cubic-bezier(0.81, 0.04, 0.4, 0.7) infinite;
+            animation: rotate 3s cubic-bezier(0.81, 0.04, 0.4, 0.7) infinite;
+            -webkit-animation-delay: 50ms;
+            animation-delay: 50ms;
+        }
+
+        .reflect-loading li:nth-child(3) {
+            background-color: #178eff;
+            -webkit-animation: rotate 3s cubic-bezier(0.81, 0.04, 0.4, 0.7) infinite;
+            animation: rotate 3s cubic-bezier(0.81, 0.04, 0.4, 0.7) infinite;
+            -webkit-animation-delay: 100ms;
+            animation-delay: 100ms;
+        }
+
+        .reflect-loading li:nth-child(4) {
+            background-color: #2288ff;
+            -webkit-animation: rotate 3s cubic-bezier(0.81, 0.04, 0.4, 0.7) infinite;
+            animation: rotate 3s cubic-bezier(0.81, 0.04, 0.4, 0.7) infinite;
+            -webkit-animation-delay: 150ms;
+            animation-delay: 150ms;
+        }
+
+        .reflect-loading li:nth-child(5) {
+            background-color: #2d82ff;
+            -webkit-animation: rotate 3s cubic-bezier(0.81, 0.04, 0.4, 0.7) infinite;
+            animation: rotate 3s cubic-bezier(0.81, 0.04, 0.4, 0.7) infinite;
+            -webkit-animation-delay: 200ms;
+            animation-delay: 200ms;
+        }
+
+        .reflect-loading li:nth-child(6) {
+            background-color: #397dff;
+            -webkit-animation: rotate 3s cubic-bezier(0.81, 0.04, 0.4, 0.7) infinite;
+            animation: rotate 3s cubic-bezier(0.81, 0.04, 0.4, 0.7) infinite;
+            -webkit-animation-delay: 250ms;
+            animation-delay: 250ms;
+        }
+
+        .reflect-loading li:nth-child(7) {
+            background-color: #4477ff;
+            -webkit-animation: rotate 3s cubic-bezier(0.81, 0.04, 0.4, 0.7) infinite;
+            animation: rotate 3s cubic-bezier(0.81, 0.04, 0.4, 0.7) infinite;
+            -webkit-animation-delay: 300ms;
+            animation-delay: 300ms;
+        }
+
+        .reflect-loading li:nth-child(8) {
+            background-color: #4f71ff;
+            -webkit-animation: rotate 3s cubic-bezier(0.81, 0.04, 0.4, 0.7) infinite;
+            animation: rotate 3s cubic-bezier(0.81, 0.04, 0.4, 0.7) infinite;
+            -webkit-animation-delay: 350ms;
+            animation-delay: 350ms;
+        }
+
+        .reflect-loading li:nth-child(9) {
+            background-color: #5b6cff;
+            -webkit-animation: rotate 3s cubic-bezier(0.81, 0.04, 0.4, 0.7) infinite;
+            animation: rotate 3s cubic-bezier(0.81, 0.04, 0.4, 0.7) infinite;
+            -webkit-animation-delay: 400ms;
+            animation-delay: 400ms;
+        }
+
+        .reflect-loading li:nth-child(10) {
+            background-color: #6666ff;
+            -webkit-animation: rotate 3s cubic-bezier(0.81, 0.04, 0.4, 0.7) infinite;
+            animation: rotate 3s cubic-bezier(0.81, 0.04, 0.4, 0.7) infinite;
+            -webkit-animation-delay: 450ms;
+            animation-delay: 450ms;
+        }
+
+        @-webkit-keyframes rotate {
+            0% {
+                -webkit-transform: rotate(-0.5turn) rotateX(-1turn);
+                transform: rotate(-0.5turn) rotateX(-1turn);
+            }
+
+            75%,
+            100% {
+                -webkit-transform: none;
+                transform: none;
+            }
+        }
+
+        @keyframes rotate {
+            0% {
+                -webkit-transform: rotate(-0.5turn) rotateX(-1turn);
+                transform: rotate(-0.5turn) rotateX(-1turn);
+            }
+
+            75%,
+            100% {
+                -webkit-transform: none;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+
+<body translate="no">
+    <div class="bruce flex-ct-x">
+        <ul class="reflect-loading">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+
+</body>
+
+</html>

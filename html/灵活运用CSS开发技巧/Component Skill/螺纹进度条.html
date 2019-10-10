@@ -1,0 +1,56 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CodePen - 【iCSS：组件】螺纹进度条</title>
+    <link rel="stylesheet" href="./reset.css">
+    <style>
+        .thread-progressbar {
+            position: relative;
+            padding-right: 200px;
+            width: 500px;
+            height: calc(1.4142 * 20px);
+            background: repeating-linear-gradient(45deg, #3c9, #3c9 10px, transparent 11px, transparent 19px, #3c9 20px) 0 0 content-box;
+            -webkit-animation: twill 1s linear infinite;
+            animation: twill 1s linear infinite;
+        }
+
+        .thread-progressbar::after {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.5));
+            content: "";
+        }
+
+        @-webkit-keyframes twill {
+            from {
+                background-position-y: 0;
+            }
+
+            to {
+                background-position-y: calc(-1 * 1.4142 * 40px);
+            }
+        }
+
+        @keyframes twill {
+            from {
+                background-position-y: 0;
+            }
+
+            to {
+                background-position-y: calc(-1 * 1.4142 * 40px);
+            }
+        }
+    </style>
+</head>
+
+<body translate="no">
+    <div class="bruce flex-ct-x">
+        <div class="thread-progressbar"></div>
+    </div>
+
+
+</body>
+
+</html>

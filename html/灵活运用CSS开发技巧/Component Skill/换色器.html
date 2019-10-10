@@ -1,0 +1,50 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CodePen - 【iCSS：组件】换色器</title>
+    <link rel="stylesheet" href="./reset.css">
+    <style>
+        .color-changer {
+            overflow: hidden;
+            position: relative;
+            height: 100%;
+        }
+
+        .color-changer input {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            mix-blend-mode: hue;
+        }
+
+        .color-changer img {
+            width: 100%;
+            height: 100%;
+            -o-object-fit: cover;
+            object-fit: cover;
+        }
+    </style>
+    <script>
+        window.console = window.console || function (t) { };
+    </script>
+    <script>
+        if (document.location.search.match(/type=embed/gi)) {
+            window.parent.postMessage("resize", "*");
+        }
+    </script>
+</head>
+
+<body translate="no">
+    <div class="bruce">
+        <div class="color-changer">
+            <input type="color" value="#ff6666">
+            <img src="https://yangzw.vip/static/codepen/car.jpg">
+        </div>
+    </div>
+
+
+</body>
+
+</html>

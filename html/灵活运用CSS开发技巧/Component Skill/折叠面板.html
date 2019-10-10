@@ -1,0 +1,80 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CodePen - 【iCSS：组件】折叠面板</title>
+    <link rel="stylesheet" href="./reset.css">
+    <style>
+        .accordion {
+            width: 300px;
+        }
+
+        .accordion article {
+            margin-top: 5px;
+            cursor: pointer;
+        }
+
+        .accordion article:first-child {
+            margin-top: 0;
+        }
+
+        .accordion input {
+            display: none;
+        }
+
+        .accordion input:nth-child(1):checked~article:nth-of-type(1) p,
+        .accordion input:nth-child(2):checked~article:nth-of-type(2) p,
+        .accordion input:nth-child(3):checked~article:nth-of-type(3) p {
+            border-bottom-width: 1px;
+            max-height: 600px;
+        }
+
+        .accordion label {
+            display: block;
+            padding: 0 20px;
+            height: 40px;
+            background-color: #f66;
+            cursor: pointer;
+            line-height: 40px;
+            font-size: 16px;
+            color: #fff;
+        }
+
+        .accordion p {
+            overflow: hidden;
+            padding: 0 20px;
+            border: 1px solid #f66;
+            border-top: none;
+            border-bottom-width: 0;
+            max-height: 0;
+            line-height: 30px;
+            transition: all 500ms;
+        }
+    </style>
+</head>
+
+<body translate="no">
+    <div class="bruce flex-ct-x">
+        <div class="accordion">
+            <input type="checkbox" id="collapse1">
+            <input type="checkbox" id="collapse2">
+            <input type="checkbox" id="collapse3">
+            <article>
+                <label for="collapse1">列表1</label>
+                <p>内容1<br>内容2<br>内容3<br>内容4</p>
+            </article>
+            <article>
+                <label for="collapse2">列表2</label>
+                <p>内容1<br>内容2<br>内容3<br>内容4</p>
+            </article>
+            <article>
+                <label for="collapse3">列表3</label>
+                <p>内容1<br>内容2<br>内容3<br>内容4</p>
+            </article>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

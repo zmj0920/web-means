@@ -1,0 +1,47 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CodePen - 【iCSS：色彩】使用::selection改变文本选择颜色</title>
+    <link rel="stylesheet" href="./reset.css">
+    <style>
+        ::-moz-selection {
+            background-color: #66f;
+            color: #fff;
+        }
+
+        ::selection {
+            background-color: #66f;
+            color: #fff;
+        }
+
+        .select-color {
+            line-height: 50px;
+            font-weight: bold;
+            font-size: 30px;
+            color: #f66;
+        }
+
+        .special::-moz-selection {
+            background-color: #3c9;
+        }
+
+        .special::selection {
+            background-color: #3c9;
+        }
+    </style>
+</head>
+
+<body translate="no">
+    <div class="bruce flex-ct-x">
+        <div class="select-color">
+            <p>全局选择文字颜色</p>
+            <p>全局选择文字颜色</p>
+            <p class="special">局部选择文字颜色</p>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

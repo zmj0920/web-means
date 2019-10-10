@@ -1,0 +1,1371 @@
+﻿
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="renderer" content="webkit" />
+  <title>flexbox各个属性</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .wrapper {
+      width: 100%;
+      background-color: #c4c4c4;
+      margin-bottom: 30px;
+      position: relative;
+      border: 1px solid #000;
+    }
+
+    .wrapper .container-controller {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    .wrapper h1 {
+      margin-top: 5px;
+    }
+
+    .container-controller .contorler-button:active {
+      background-color: rgba(32, 108, 179, 0.685);
+    }
+
+    .container-controller .contorler-button {
+      flex: auto;
+      font-size: 15px;
+      line-height: 20px;
+      border: 1px solid #000;
+      background-color: rgb(32, 108, 179);
+      color: aliceblue;
+      border-radius: 1em;
+      padding: 0.1em 0.5em;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .container-controller .contorler-select,
+    .item-controller .contorler-select {
+      flex-grow: 1;
+      font-size: 15px;
+      line-height: 25px;
+      border: 1px solid #000;
+      background-color: rgb(32, 108, 179);
+      color: aliceblue;
+      border-radius: 1em;
+      padding: 0.1em 0.5em;
+      cursor: pointer;
+      min-width: 120px;
+      width: 0;
+    }
+
+    .container {
+      display: flex;
+      background-color: #915151;
+    }
+
+    .item {
+      line-height: 80px;
+      text-align: center;
+      width: 120px;
+      background-color: rgb(214, 120, 52);
+      border-radius: 1em;
+      border: 5px solid #000;
+    }
+
+    .item-controller {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      position: absolute;
+      background-color: rgb(32, 108, 179);
+      border: 1px solid #000;
+      border-radius: 0.4em;
+    }
+
+    .item-controller .contorler-select {
+      width: 100%;
+      border: none;
+      border-top: 1px black solid;
+      border-radius: inherit;
+      outline-style: none;
+    }
+
+    .item-controller .contorler-number-input,
+    .item-controller .contorler-input {
+      list-style: none;
+      font-size: 15px;
+      line-height: 25px;
+      color: aliceblue;
+      padding: 0.1em 0.5em;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .item-controller .contorler-number-input select {
+      border: 1px solid #000;
+      color: aliceblue;
+      background-color: rgb(43, 142, 207);
+      border-radius: 0.5em;
+      padding: 0.1em 0.5em;
+      margin-left: 10px;
+      cursor: pointer;
+      outline-style: none;
+    }
+
+
+    .item-controller .contorler-number-input input,
+    .item-controller .contorler-input input {
+      border: 1px solid #000;
+      color: aliceblue;
+      background-color: rgb(43, 142, 207);
+      border-radius: 5em;
+      padding: 0.1em 0.5em;
+      margin-left: 10px;
+      cursor: pointer;
+      width: 50px;
+      outline-style: none;
+    }
+
+    .item-controller .contorler-input input {
+      width: 100px;
+      word-spacing: 1em;
+      padding-left: 30px;
+    }
+
+    /* 非内联 flex */
+    /* 内联 flex */
+    .inline-flex {
+      display: inline-flex;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 非内联 flex -->
+  <div class="wrapper">
+    <h1>非内联 flex</h1>
+    <div class="container flex" style="">
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">3</div>
+      <div class="item">4</div>
+      <div class="item">5</div>
+    </div>
+    <span>非内联 flex</span>
+  </div>
+
+  <!-- 内联 flex -->
+  <div class="wrapper">
+    <!-- 内联 flex 的基线是内部第一个成员的第一行字符所在的基线,如果有成员基于基线对齐,那个这个时候,基于基线对齐的成员的第一行字符所在的基线,将会是内联 flex 的基线-->
+    <h1>内联 flex</h1>
+    <div class="container inline-flex">
+      <!-- item 1 的第一行字符所在的基线就是整个内联 flex 的基线, 不管 flex-direction 如何设置也是一样, 但是如果存在基于基线对齐的成员,那么该成员的基线就是整个内联 flex 的基线 -->
+      <!-- <div class="item" style="font-size: 80px">1 1</div> -->
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">3</div>
+      <div class="item">4</div>
+      <div class="item">5</div>
+    </div>
+    <span>内联 flex</span>
+  </div>
+
+  <!-- flex-direction row -->
+  <div class="wrapper">
+    <h1>flex-direction row</h1>
+    <div class="container flex" style="flex-direction: row">
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">3</div>
+      <div class="item">4</div>
+      <div class="item">5</div>
+    </div>
+  </div>
+
+  <!-- flex-direction row-reverse -->
+  <div class="wrapper">
+    <h1>flex-direction row-reverse</h1>
+    <div class="container flex" style="flex-direction: row-reverse">
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">3</div>
+      <div class="item">4</div>
+      <div class="item">5</div>
+    </div>
+  </div>
+
+  <!-- flex-direction column -->
+  <div class="wrapper">
+    <h1>flex-direction column</h1>
+    <div class="container flex" style="flex-direction: column">
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">3</div>
+      <div class="item">4</div>
+      <div class="item">5</div>
+    </div>
+  </div>
+
+  <!-- flex-direction column-reverse -->
+  <div class="wrapper">
+    <h1>flex-direction column-reverse</h1>
+    <div class="container flex" style="flex-direction: column-reverse; align-items: flex-end">
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">3</div>
+      <div class="item">4</div>
+      <div class="item">5</div>
+    </div>
+  </div>
+
+  <!-- flex-wrap nowrap-->
+  <div class="wrapper">
+    <h1>flex-wrap nowrap</h1>
+    <div class="container flex">
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">3</div>
+      <div class="item">4</div>
+      <div class="item">5</div>
+      <div class="item">6</div>
+      <div class="item">7</div>
+      <div class="item">8</div>
+      <div class="item">9</div>
+      <div class="item">10</div>
+      <div class="item">11</div>
+      <div class="item">12</div>
+      <div class="item">13</div>
+      <div class="item">14</div>
+      <div class="item">15</div>
+      <div class="item">16</div>
+      <div class="item">17</div>
+      <div class="item">18</div>
+      <div class="item">19</div>
+      <div class="item">20</div>
+    </div>
+  </div>
+
+  <!-- flex-wrap wrap-->
+  <div class="wrapper">
+    <h1>flex-wrap wrap</h1>
+    <div class="container flex" style="flex-wrap: wrap">
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">3</div>
+      <div class="item">4</div>
+      <div class="item">5</div>
+      <div class="item">6</div>
+      <div class="item">7</div>
+      <div class="item">8</div>
+      <div class="item">9</div>
+      <div class="item">10</div>
+      <div class="item">11</div>
+      <div class="item">12</div>
+      <div class="item">13</div>
+      <div class="item">14</div>
+      <div class="item">15</div>
+      <div class="item">16</div>
+      <div class="item">17</div>
+      <div class="item">18</div>
+      <div class="item">19</div>
+      <div class="item">20</div>
+    </div>
+  </div>
+
+  <!-- flex-wrap wrap-reverse-->
+  <div class="wrapper">
+    <h1>flex-wrap wrap-reverse</h1>
+    <div class="container flex" style="flex-wrap: wrap-reverse">
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">3</div>
+      <div class="item">4</div>
+      <div class="item">5</div>
+      <div class="item">6</div>
+      <div class="item">7</div>
+      <div class="item">8</div>
+      <div class="item">9</div>
+      <div class="item">10</div>
+      <div class="item">11</div>
+      <div class="item">12</div>
+      <div class="item">13</div>
+      <div class="item">14</div>
+      <div class="item">15</div>
+      <div class="item">16</div>
+      <div class="item">17</div>
+      <div class="item">18</div>
+      <div class="item">19</div>
+      <div class="item">20</div>
+    </div>
+  </div>
+
+  <!-- flex-flow: row nowrap-->
+  <div class="wrapper">
+    <h1>flex-flow: row nowrap</h1>
+    <div class="container flex" style="flex-flow: row nowrap">
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">3</div>
+      <div class="item">4</div>
+      <div class="item">5</div>
+      <div class="item">6</div>
+      <div class="item">7</div>
+      <div class="item">8</div>
+      <div class="item">9</div>
+      <div class="item">10</div>
+      <div class="item">11</div>
+      <div class="item">12</div>
+      <div class="item">13</div>
+      <div class="item">14</div>
+      <div class="item">15</div>
+      <div class="item">16</div>
+      <div class="item">17</div>
+      <div class="item">18</div>
+      <div class="item">19</div>
+      <div class="item">20</div>
+    </div>
+  </div>
+
+  <!-- justify-content flex-start -->
+  <div class="wrapper">
+    <h1>justify-content flex-start</h1>
+    <div class="container flex" style="justify-content: flex-start">
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">3</div>
+      <div class="item">4</div>
+      <div class="item">5</div>
+    </div>
+  </div>
+
+  <!-- justify-content flex-end -->
+  <div class="wrapper">
+    <h1>justify-content flex-end</h1>
+    <div class="container flex" style="justify-content: flex-end">
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">3</div>
+      <div class="item">4</div>
+      <div class="item">5</div>
+    </div>
+  </div>
+
+  <!-- justify-content flex-center -->
+  <div class="wrapper">
+    <h1>justify-content flex-center</h1>
+    <div class="container flex" style="justify-content: center">
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">3</div>
+      <div class="item">4</div>
+      <div class="item">5</div>
+    </div>
+  </div>
+
+  <!-- justify-content flex-around -->
+  <div class="wrapper">
+    <h1>justify-content flex-around</h1>
+    <div class="container flex" style="justify-content: space-around">
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">3</div>
+      <div class="item">4</div>
+      <div class="item">5</div>
+    </div>
+  </div>
+
+  <!-- justify-content flex-between -->
+  <div class="wrapper">
+    <h1>justify-content flex-between</h1>
+    <div class="container flex" style="justify-content: space-between">
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">3</div>
+      <div class="item">4</div>
+      <div class="item">5</div>
+    </div>
+  </div>
+
+  <!-- justify-content flex-evenly -->
+  <div class="wrapper">
+    <h1>justify-content flex-evenly</h1>
+    <div class="container flex" style="justify-content: space-evenly">
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">3</div>
+      <div class="item">4</div>
+      <div class="item">5</div>
+    </div>
+  </div>
+
+  <!-- align-items: flex-start -->
+  <div class="wrapper">
+    <h1>align-items: flex-start</h1>
+    <div class="container flex" style="align-items: flex-start; min-height: 300px;">
+      <div class="item" style="line-height: 100px">1</div>
+      <div class="item" style="line-height: 60px;">2</div>
+      <div class="item" style="line-height: 80px">3</div>
+      <div class="item" style="line-height: 140px">4</div>
+      <div class="item" style="line-height: 50px">5</div>
+    </div>
+  </div>
+
+  <!-- align-items: flex-end -->
+  <div class="wrapper">
+    <h1>align-items: flex-end</h1>
+    <div class="container flex" style="align-items: flex-end; min-height: 300px;">
+      <div class="item" style="line-height: 100px">1</div>
+      <div class="item" style="line-height: 60px;">2</div>
+      <div class="item" style="line-height: 80px">3</div>
+      <div class="item" style="line-height: 140px">4</div>
+      <div class="item" style="line-height: 50px">5</div>
+    </div>
+  </div>
+
+  <!-- align-items: flex-center -->
+  <div class="wrapper">
+    <h1>align-items: flex-center</h1>
+    <div class="container flex" style="align-items: center; min-height: 300px;">
+      <div class="item" style="line-height: 100px">1</div>
+      <div class="item" style="line-height: 60px;">2</div>
+      <div class="item" style="line-height: 80px">3</div>
+      <div class="item" style="line-height: 140px">4</div>
+      <div class="item" style="line-height: 50px">5</div>
+    </div>
+  </div>
+
+  <!-- align-items: flex-baseline -->
+  <div class="wrapper">
+    <h1>align-items: flex-baseline</h1>
+    <div class="container flex" style="align-items: baseline; min-height: 300px;">
+      <div class="item" style="line-height: 100px">1 1111 1111</div>
+      <div class="item" style="line-height: 60px;">2 222 22222</div>
+      <div class="item" style="line-height: 80px">3 2 2 22 22</div>
+      <div class="item" style="line-height: 140px">4 444 444 44</div>
+      <div class="item" style="line-height: 50px">5 55 55 5 5 5</div>
+    </div>
+  </div>
+
+  <!-- align-items: flex-stretch -->
+  <div class="wrapper">
+    <h1>align-items: flex-stretch</h1>
+    <div class="container flex" style="align-items: stretch; min-height: 300px;">
+      <div class="item" style="line-height: 100px">1</div>
+      <div class="item" style="line-height: 60px;">2</div>
+      <div class="item" style="line-height: 80px">3</div>
+      <div class="item" style="line-height: 140px">4</div>
+      <div class="item" style="line-height: 50px">5</div>
+    </div>
+  </div>
+
+  <!-- align-content: flex-start -->
+  <div class="wrapper">
+    <h1>align-content: flex-start</h1>
+    <div class="container flex"
+      style="align-content: flex-start; min-height: 700px; flex-wrap: wrap; align-items: flex-start">
+      <div class="item" style="line-height: 100px">1</div>
+      <div class="item" style="line-height: 60px;">2</div>
+      <div class="item" style="line-height: 80px">3</div>
+      <div class="item" style="line-height: 140px">4</div>
+      <div class="item" style="line-height: 50px">5</div>
+      <div class="item" style="line-height: 70px">6</div>
+      <div class="item" style="line-height: 110px">7</div>
+      <div class="item" style="line-height: 20px">8</div>
+      <div class="item" style="line-height: 80px">9</div>
+      <div class="item" style="line-height: 230px">10</div>
+      <div class="item" style="line-height: 120px">11</div>
+      <div class="item" style="line-height: 93px">12</div>
+      <div class="item" style="line-height: 47px">13</div>
+      <div class="item" style="line-height: 120px">14</div>
+      <div class="item" style="line-height: 40px">15</div>
+      <div class="item" style="line-height: 170px">16</div>
+      <div class="item" style="line-height: 20px">17</div>
+    </div>
+  </div>
+
+  <!-- align-content: flex-end -->
+  <div class="wrapper">
+    <h1>align-content: flex-end</h1>
+    <div class="container flex"
+      style="align-content: flex-end; min-height: 700px; flex-wrap: wrap; align-items: flex-start">
+      <div class="item" style="line-height: 100px">1</div>
+      <div class="item" style="line-height: 60px;">2</div>
+      <div class="item" style="line-height: 80px">3</div>
+      <div class="item" style="line-height: 140px">4</div>
+      <div class="item" style="line-height: 50px">5</div>
+      <div class="item" style="line-height: 70px">6</div>
+      <div class="item" style="line-height: 110px">7</div>
+      <div class="item" style="line-height: 20px">8</div>
+      <div class="item" style="line-height: 80px">9</div>
+      <div class="item" style="line-height: 230px">10</div>
+      <div class="item" style="line-height: 120px">11</div>
+      <div class="item" style="line-height: 93px">12</div>
+      <div class="item" style="line-height: 47px">13</div>
+      <div class="item" style="line-height: 120px">14</div>
+      <div class="item" style="line-height: 40px">15</div>
+      <div class="item" style="line-height: 170px">16</div>
+      <div class="item" style="line-height: 20px">17</div>
+    </div>
+  </div>
+
+  <!-- align-content: center -->
+  <div class="wrapper">
+    <h1>align-content: center</h1>
+    <div class="container flex"
+      style="align-content: center; min-height: 700px; flex-wrap: wrap; align-items: flex-start">
+      <div class="item" style="line-height: 100px">1</div>
+      <div class="item" style="line-height: 60px;">2</div>
+      <div class="item" style="line-height: 80px">3</div>
+      <div class="item" style="line-height: 140px">4</div>
+      <div class="item" style="line-height: 50px">5</div>
+      <div class="item" style="line-height: 70px">6</div>
+      <div class="item" style="line-height: 110px">7</div>
+      <div class="item" style="line-height: 20px">8</div>
+      <div class="item" style="line-height: 80px">9</div>
+      <div class="item" style="line-height: 230px">10</div>
+      <div class="item" style="line-height: 120px">11</div>
+      <div class="item" style="line-height: 93px">12</div>
+      <div class="item" style="line-height: 47px">13</div>
+      <div class="item" style="line-height: 120px">14</div>
+      <div class="item" style="line-height: 40px">15</div>
+      <div class="item" style="line-height: 170px">16</div>
+      <div class="item" style="line-height: 20px">17</div>
+    </div>
+  </div>
+
+  <!-- align-content: space-between -->
+  <div class="wrapper">
+    <h1>align-content: space-between</h1>
+    <div class="container flex"
+      style="align-content: space-between; min-height: 700px; flex-wrap: wrap; align-items: flex-start">
+      <div class="item" style="line-height: 100px">1</div>
+      <div class="item" style="line-height: 60px;">2</div>
+      <div class="item" style="line-height: 80px">3</div>
+      <div class="item" style="line-height: 140px">4</div>
+      <div class="item" style="line-height: 50px">5</div>
+      <div class="item" style="line-height: 70px">6</div>
+      <div class="item" style="line-height: 110px">7</div>
+      <div class="item" style="line-height: 20px">8</div>
+      <div class="item" style="line-height: 80px">9</div>
+      <div class="item" style="line-height: 230px">10</div>
+      <div class="item" style="line-height: 120px">11</div>
+      <div class="item" style="line-height: 93px">12</div>
+      <div class="item" style="line-height: 47px">13</div>
+      <div class="item" style="line-height: 120px">14</div>
+      <div class="item" style="line-height: 40px">15</div>
+      <div class="item" style="line-height: 170px">16</div>
+      <div class="item" style="line-height: 20px">17</div>
+    </div>
+  </div>
+
+  <!-- align-content: space-around -->
+  <div class="wrapper">
+    <h1>align-content: space-around</h1>
+    <div class="container flex"
+      style="align-content: space-around; min-height: 700px; flex-wrap: wrap; align-items: flex-start">
+      <div class="item" style="line-height: 100px">1</div>
+      <div class="item" style="line-height: 60px;">2</div>
+      <div class="item" style="line-height: 80px">3</div>
+      <div class="item" style="line-height: 140px">4</div>
+      <div class="item" style="line-height: 50px">5</div>
+      <div class="item" style="line-height: 70px">6</div>
+      <div class="item" style="line-height: 110px">7</div>
+      <div class="item" style="line-height: 20px">8</div>
+      <div class="item" style="line-height: 80px">9</div>
+      <div class="item" style="line-height: 230px">10</div>
+      <div class="item" style="line-height: 120px">11</div>
+      <div class="item" style="line-height: 93px">12</div>
+      <div class="item" style="line-height: 47px">13</div>
+      <div class="item" style="line-height: 120px">14</div>
+      <div class="item" style="line-height: 40px">15</div>
+      <div class="item" style="line-height: 170px">16</div>
+      <div class="item" style="line-height: 20px">17</div>
+    </div>
+  </div>
+
+  <!-- align-content: stretch -->
+  <div class="wrapper">
+    <h1>align-content: stretch</h1>
+    <div class="container flex"
+      style="align-content: stretch; min-height: 700px; flex-wrap: wrap; align-items: flex-start">
+      <div class="item" style="line-height: 100px">1</div>
+      <div class="item" style="line-height: 60px;">2</div>
+      <div class="item" style="line-height: 80px">3</div>
+      <div class="item" style="line-height: 140px">4</div>
+      <div class="item" style="line-height: 50px">5</div>
+      <div class="item" style="line-height: 70px">6</div>
+      <div class="item" style="line-height: 110px">7</div>
+      <div class="item" style="line-height: 20px">8</div>
+      <div class="item" style="line-height: 80px">9</div>
+      <div class="item" style="line-height: 230px">10</div>
+      <div class="item" style="line-height: 120px">11</div>
+      <div class="item" style="line-height: 93px">12</div>
+      <div class="item" style="line-height: 47px">13</div>
+      <div class="item" style="line-height: 120px">14</div>
+      <div class="item" style="line-height: 40px">15</div>
+      <div class="item" style="line-height: 170px">16</div>
+      <div class="item" style="line-height: 20px">17</div>
+    </div>
+  </div>
+
+  <!-- order -->
+  <div class="wrapper">
+    <h1>order</h1>
+    <div class="container flex" style="">
+      <div class="item" style="order: -1">1</div>
+      <div class="item" style="order: -1">2</div>
+      <div class="item" style="order: 2">3</div>
+      <div class="item" style="order: 0">4</div>
+      <div class="item" style="order: -4">5</div>
+    </div>
+  </div>
+
+  <!-- flex-grow -->
+  <div class="wrapper">
+    <h1>flex-grow</h1>
+    <div class="container flex" style="">
+      <div class="item" style="flex-grow: 1">1</div>
+      <div class="item" style="flex-grow: 3">2</div>
+      <div class="item" style="flex-grow: 2">3</div>
+      <div class="item" style="flex-grow: 0">4</div>
+      <div class="item" style="flex-grow: 2">5</div>
+    </div>
+  </div>
+
+  <!-- flex-shrink -->
+  <div class="wrapper">
+    <h1>flex-shrink</h1>
+    <div class="container flex" style="">
+      <div class="item" style="flex-shrink: 1">1</div>
+      <div class="item" style="flex-shrink: 3">2</div>
+      <div class="item" style="flex-shrink: 2">3</div>
+      <div class="item" style="flex-shrink: 0">4</div>
+      <div class="item" style="flex-shrink: 4">5</div>
+      <div class="item" style="flex-shrink: 7">6</div>
+      <div class="item" style="flex-shrink: 8">7</div>
+      <div class="item" style="flex-shrink: 6">8</div>
+      <div class="item" style="flex-shrink: 4">9</div>
+      <div class="item" style="flex-shrink: 12">10</div>
+      <div class="item" style="flex-shrink: 21">11</div>
+      <div class="item" style="flex-shrink: 20">12</div>
+    </div>
+  </div>
+
+  <!-- flex-basis: auto -->
+  <div class="wrapper">
+    <h1>flex-basis: auto</h1>
+    <div class="container flex" style="">
+      <div class="item" style="flex-grow: 1; width: 100px">1</div>
+      <div class="item" style="flex-grow: 1; width: 200px">2</div>
+      <div class="item" style="flex-grow: 1; width: 500px">3</div>
+      <div class="item" style="flex-grow: 1; width: 100px">4</div>
+      <div class="item" style="flex-grow: 1; width: 200px">5</div>
+    </div>
+  </div>
+
+  <!-- flex-basis: 0 在没有最少首选宽度的限制下可以保证每个成员的长度一样-->
+  <div class="wrapper">
+    <h1>flex-basis: 0</h1>
+    <div class="container flex" style="">
+      <div class="item" style="flex-grow: 1; flex-basis: 0; width: 100px">
+        1
+      </div>
+      <div class="item" style="flex-grow: 1; flex-basis: 0; width: 200px">
+        2
+      </div>
+      <div class="item" style="flex-grow: 1; flex-basis: 0; width: 500px">
+        3
+      </div>
+      <div class="item" style="flex-grow: 1; flex-basis: 0; width: 100px">
+        4
+      </div>
+      <div class="item" style="flex-grow: 1; flex-basis: 0; width: 200px">
+        5
+      </div>
+    </div>
+  </div>
+
+  <!-- flex： 1 -->
+  <div class="wrapper">
+    <h1>flex：1</h1>
+    <div class="container flex" style="">
+      <div class="item" style="flex: 1; width: 100px">1</div>
+      <div class="item" style="flex: 1; width: 200px">2</div>
+      <div class="item" style="flex: 1; width: 500px">3</div>
+      <div class="item" style="flex: 1; width: 100px">4</div>
+      <div class="item" style="flex: 1; width: 200px">5</div>
+    </div>
+  </div>
+
+  <!-- flex： auto -->
+  <div class="wrapper">
+    <h1>flex：auto</h1>
+    <div class="container flex" style="">
+      <div class="item" style="flex: auto; width: 100px">1</div>
+      <div class="item" style="flex: auto; width: 200px">2</div>
+      <div class="item" style="flex: auto; width: 500px">3</div>
+      <div class="item" style="flex: auto; width: 100px">4</div>
+      <div class="item" style="flex: auto; width: 200px">5</div>
+    </div>
+  </div>
+
+  <!-- flex： none -->
+  <div class="wrapper">
+    <h1>flex：none</h1>
+    <div class="container flex" style="">
+      <div class="item" style="flex: none">1</div>
+      <div class="item" style="flex: none">2</div>
+      <div class="item" style="flex: none">3</div>
+      <div class="item" style="flex: none">4</div>
+      <div class="item" style="flex: none">5</div>
+    </div>
+  </div>
+
+  <!-- flex： none -->
+  <div class="wrapper">
+    <h1>flex：none</h1>
+    <div class="container flex" style="">
+      <div class="item" style="flex: none">1</div>
+      <div class="item" style="flex: none">2</div>
+      <div class="item" style="flex: none">3</div>
+      <div class="item" style="flex: none">4</div>
+      <div class="item" style="flex: none">5</div>
+      <div class="item" style="flex: none">6</div>
+      <div class="item" style="flex: none">7</div>
+      <div class="item" style="flex: none">8</div>
+      <div class="item" style="flex: none">9</div>
+      <div class="item" style="flex: none">10</div>
+      <div class="item" style="flex: none">11</div>
+    </div>
+  </div>
+
+  <!-- flex： 2 -->
+  <div class="wrapper">
+    <h1>flex：2</h1>
+    <div class="container flex" style="">
+      <div class="item" style="flex: 2">1</div>
+      <div class="item" style="flex: 2">2</div>
+      <div class="item" style="flex: 2">3</div>
+      <div class="item" style="flex: 2">4</div>
+      <div class="item" style="flex: 2">5</div>
+      <div class="item" style="flex: 2">6</div>
+      <div class="item" style="flex: 2">7</div>
+      <div class="item" style="flex: 2">8</div>
+      <div class="item" style="flex: 2">9</div>
+      <div class="item" style="flex: 2">10</div>
+      <div class="item" style="flex: 2">11</div>
+    </div>
+  </div>
+
+  <!-- align-self -->
+  <div class="wrapper">
+    <h1>align-self</h1>
+    <div class="container flex" style="align-items: flex-end; min-height: 300px;">
+      <div class="item" style="line-height: 100px; align-self: flex-start">
+        1
+      </div>
+      <div class="item" style="line-height: 60px; align-self: flex-end">
+        2
+      </div>
+      <div class="item" style="line-height: 80px; align-self: center">3</div>
+      <div class="item" style="line-height: 140px; align-self: baseline">
+        4
+      </div>
+      <div class="item" style="line-height: 50px; align-self: stretch">5</div>
+    </div>
+  </div>
+
+  <script>
+    // Controller
+    class Controller {
+      constructor(name) {
+        this.name = name
+      }
+
+      _getPropertypeSupported(propertype) {
+        if (propertype in document.body.style) {
+          return propertype
+        }
+        var prefixes = ["Moz", "Webkit", "O", "ms", "Khtml"]
+        var prefPropertype =
+          propertype.charAt(0).toUpperCase() + propertype.substring(1)
+        for (let i = 0; i < prefixes.length; i++) {
+          if (prefixes[i] + prefPropertype in document.body.style) {
+            return prefixes[i] + prefPropertype
+          }
+        }
+        return false
+      }
+
+      _camelize(style) {
+        return style.replace(/-(\w)/, function (all, letter) {
+          return letter.toUpperCase()
+        })
+      }
+
+      _getStyle(ele, propertype) {
+        propertype = this._getPropertypeSupported(propertype)
+        if (window.getComputedStyle) {
+          return window.getComputedStyle(ele, null)[propertype]
+        } else {
+          if (propertype === "opacity") {
+            return getIEOpacity(ele)
+          }
+          if (propertype === float) {
+            return ele.currentStyle.getAttribute("styleFloat")
+          }
+          if (
+            (propertype === "width" || propertype === "height") &&
+            elem.currentStyle[propertype] == "auto"
+          ) {
+            var clientRect = ele.getBoundingClientRect()
+            return (
+              (propertype == "width" ?
+                clientRect.right - clientRect.left :
+                clientRect.bottom - clientRect.top) + "px"
+            )
+          }
+          return ele.currentStyle.getAttribute(this._camelize(propertype))
+        }
+      }
+
+      _setStyle(ele, propertype, value) {
+        propertype = this._getPropertypeSupported(propertype)
+        if (propertype == "opacity") {
+          if (!ele.currentStyle || !elem.currentStyle.hasLayout) {
+            ele.style.zoom = 1
+          }
+          propertype = "filter"
+          if (!!window.XDomainRequest) {
+            value =
+              "progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=" +
+              value * 100 +
+              ")"
+          } else {
+            value = "alpha(opacity=" + value * 100 + ")"
+          }
+        }
+        ele.style[propertype] = value
+      }
+
+      _minxinPropertype(...propertypes) {
+        if (propertypes.length === 0) {
+          return []
+        }
+
+        function minxinPropertype(propertype1 = [], propertype2 = []) {
+          let newPropertype = []
+          let newIndex = 0
+          for (const propertypeValue1 of propertype1) {
+            for (const propertypeValue2 of propertype2) {
+              newPropertype[newIndex++] =
+                propertypeValue1 + " " + propertypeValue2
+            }
+          }
+          return newPropertype
+        }
+
+        return propertypes.reduce((propertype1, propertype2) => {
+          return minxinPropertype(propertype1, propertype2)
+        })
+      }
+
+      _createControlInput(ele, propertype) {
+        const li = document.createElement('li')
+        const label = document.createElement('label')
+        const input = document.createElement('input')
+        let value = this._getStyle(ele, propertype)
+        input.value = value
+        label.textContent = propertype + ' :'
+        li.classList.add('contorler-input')
+        li.appendChild(label)
+        li.appendChild(input)
+        return li
+      }
+
+      _createControlNumberInput(ele, propertype) {
+        const li = document.createElement('li')
+        const label = document.createElement('label')
+        const input = document.createElement('input')
+        let value = this._getStyle(ele, propertype)
+        let match = value.toString().match(/([.\d]*)(.*)/)
+        input.type = 'number'
+        if (!match[1]) {
+          input.type = 'text'
+          input.value = match[2]
+        } else {
+          input.value = match[1]
+        }
+        let units = ['auto', '%', 'em', 'px', 'rem', 'ex']
+        label.textContent = propertype + ' :'
+        li.classList.add('contorler-number-input')
+        li.appendChild(label)
+        li.appendChild(input)
+        if (match[2]) {
+          const select = document.createElement('select')
+          for (const unit of units) {
+            const option = document.createElement('option')
+            option.value = unit
+            option.text = unit
+            if (unit === match[2]) {
+              option.selected = true
+            }
+            select.appendChild(option)
+          }
+          li.appendChild(select)
+        }
+        return li
+      }
+
+      _createControlButton(ele, propertype) {
+        let str = "切换至 "
+        let propertypeValue = ""
+        let propertypeValues = this[propertype]
+        let currentPropertypeValue = this._getStyle(ele, propertype)
+        if (currentPropertypeValue === propertypeValues[0]) {
+          propertypeValue = propertypeValues[1]
+        } else {
+          propertypeValue = propertypeValues[0]
+        }
+        const span = document.createElement("span")
+        span.innerHTML = str + propertypeValue
+        span.classList.add("contorler-button")
+        return span
+      }
+      _createControlSelect(ele, propertype) {
+        let propertypeValues = this[propertype]
+        const select = document.createElement("select")
+        select.classList.add("contorler-select", propertype)
+        let prefix = propertype.replace(/([A-Z])/, (all, letter) => {
+          return "-" + letter.toLowerCase()
+        })
+        select.title = prefix
+        const option = document.createElement("option")
+        option.text = prefix
+        select.appendChild(option)
+        for (const propertypeValue of propertypeValues) {
+          const option = document.createElement("option")
+
+          option.value = propertypeValue
+          option.text = propertypeValue
+          if (propertypeValue === this._getStyle(ele, propertype)) {
+            setTimeout(() => {
+              option.selected = true
+            }, 1000)
+          }
+          setTimeout(() => {
+            select.options[0].disabled = true
+          }, 1000)
+          select.appendChild(option)
+        }
+        return select
+      }
+    }
+
+    // ContainerController
+    class ContainerController extends Controller {
+      constructor(
+        wrapper, {
+          name = "container-controller",
+          ele = ".container",
+          display = ["inline-flex", "flex"],
+          flexDirection = ["row", "row-reverse", "column", "column-reverse"],
+          flexWrap = ["nowrap", "wrap", "wrap-reverse"],
+          justifyContent = [
+            "flex-start",
+            "flex-end",
+            "center",
+            "space-between",
+            "space-around",
+            "space-evenly"
+          ],
+          alignItems = [
+            "stretch",
+            "flex-start",
+            "flex-end",
+            "center",
+            "baseline"
+          ],
+          alignContent = [
+            "flex-start ",
+            "flex-end",
+            "center",
+            "space-between",
+            "space-around",
+            "stretch"
+          ]
+        } = {}
+      ) {
+        super(name)
+        this.wrapper = wrapper
+        this.ele = this.wrapper.querySelector(ele)
+        this.display = display
+        this.flexDirection = flexDirection
+        this.flexWrap = flexWrap
+        this.justifyContent = justifyContent
+        this.alignItems = alignItems
+        this.alignContent = alignContent
+        this.flexFlow = this._minxinPropertype(
+          this.flexDirection,
+          this.flexWrap
+        )
+      }
+
+      _createControlAddItem(ele) {
+        const span = document.createElement("span")
+        span.innerHTML = "增加成员"
+        span.classList.add("contorler-button")
+        span.onclick = () => {
+          const item = document.createElement("div")
+          item.classList.add("item")
+          item.innerHTML = ele.children.length + 1
+          let randomLineHeight = Math.random() * 80 + 20
+          this._setStyle(item, "line-height", randomLineHeight + "px")
+          ele.appendChild(item)
+        }
+        return span
+      }
+
+      _createControlRemoveItem(ele) {
+        const span = document.createElement("span")
+        span.innerHTML = "减少成员"
+        span.classList.add("contorler-button")
+        span.onclick = () => {
+          if (ele.lastElementChild) {
+            ele.removeChild(ele.lastElementChild)
+          }
+        }
+        return span
+      }
+
+      _createControlAddInlineText(ele) {
+        const span = document.createElement("span")
+        span.innerHTML = "增加内联文本"
+        span.classList.add("contorler-button")
+        span.onclick = () => {
+          ele.insertAdjacentText("afterend", "xx内联脚本xx")
+        }
+        return span
+      }
+
+      _getControledButton(ele, propertype) {
+        const button = this._createControlButton(ele, propertype)
+        let propertypeValues = this[propertype]
+        button.onclick = () => {
+          let currentPropertypeValue = this._getStyle(ele, propertype)
+          let prevPropertypeValue =
+            currentPropertypeValue === propertypeValues[0] ?
+            propertypeValues[1] :
+            propertypeValues[0]
+          button.innerHTML = button.innerHTML.replace(
+            prevPropertypeValue,
+            currentPropertypeValue
+          )
+          this._setStyle(ele, propertype, prevPropertypeValue)
+        }
+        return button
+      }
+
+      _getControledSelect(ele, propertype) {
+        const select = this._createControlSelect(ele, propertype)
+        select.onchange = e => {
+          const currentTarget = e.currentTarget
+          let propertypeValue =
+            currentTarget.options[currentTarget.selectedIndex].value
+          this._setStyle(ele, propertype, propertypeValue)
+          const parentnode = currentTarget.parentNode
+          const selectFlexFlow = parentnode.getElementsByClassName(
+            "flexFlow"
+          )[0]
+          const selectFlexDirection = parentnode.getElementsByClassName(
+            "flexDirection"
+          )[0]
+          const selectFlexWrap = parentnode.getElementsByClassName(
+            "flexWrap"
+          )[0]
+          if (currentTarget.classList.contains("flexDirection")) {
+            for (const option of selectFlexFlow.options) {
+              if (
+                option.value ===
+                propertypeValue +
+                " " +
+                selectFlexWrap.selectedOptions[0].value
+              ) {
+                option.selected = true
+              }
+            }
+          }
+
+          if (currentTarget.classList.contains("flexWrap")) {
+            for (const option of selectFlexFlow.options) {
+              if (
+                option.value ===
+                selectFlexDirection.selectedOptions[0].value +
+                " " +
+                propertypeValue
+              ) {
+                option.selected = true
+              }
+            }
+          }
+          if (currentTarget.classList.contains("flexFlow")) {
+            for (const option of selectFlexWrap.options) {
+              if (
+                option.value ===
+                selectFlexFlow.selectedOptions[0].value.split(" ")[1]
+              ) {
+                option.selected = true
+              }
+            }
+            for (const option of selectFlexDirection.options) {
+              if (
+                option.value ===
+                selectFlexFlow.selectedOptions[0].value.split(" ")[0]
+              ) {
+                option.selected = true
+              }
+            }
+          }
+        }
+        return select
+      }
+
+      render(
+        propertypes = [
+          "display",
+          "flexDirection",
+          "flexWrap",
+          "justifyContent",
+          "alignItems",
+          "alignContent",
+          "flexFlow"
+        ]
+      ) {
+        const div = document.createElement("div")
+        div.classList.add(this.name)
+        for (const propertype of propertypes) {
+          let ele
+          let propertypeValues = this[propertype]
+          if (propertypeValues.length === 2) {
+            ele = this._getControledButton(this.ele, propertype)
+          } else {
+            ele = this._getControledSelect(this.ele, propertype)
+          }
+          div.appendChild(ele)
+        }
+        div.appendChild(this._createControlAddItem(this.ele))
+        div.appendChild(this._createControlRemoveItem(this.ele))
+        div.appendChild(this._createControlAddInlineText(this.ele))
+        this.wrapper.insertBefore(div, this.wrapper.firstElementChild)
+      }
+    }
+
+    // ItemController
+    class ItemController extends Controller {
+      constructor({
+        name = "item-controller",
+        alignSelf = [
+          "stretch",
+          "flex-start",
+          "flex-end",
+          "center",
+          "baseline"
+        ],
+        numberInputPropertypes = ['order', 'flex-grow', 'flex-shrink', 'flex-basis'],
+        inputPropertypes = ['flex'],
+      } = {}) {
+        super(name)
+        this.alignSelf = alignSelf
+        this.numberInputPropertypes = numberInputPropertypes
+        this.inputPropertypes = inputPropertypes
+      }
+
+      _getControledSelect(ele, propertype) {
+        const select = this._createControlSelect(ele, propertype)
+        select.onchange = e => {
+          const currentTarget = e.currentTarget
+          let propertypeValue =
+            currentTarget.options[currentTarget.selectedIndex].value
+          this._setStyle(ele, propertype, propertypeValue)
+        }
+        return select
+      }
+
+      _updateFlex(ele, e) {
+        const currentTarget = e.currentTarget
+        const li = currentTarget.parentNode
+        const itemController = li.parentNode
+        if (li.classList.contains('flex-basis') || li.classList.contains('flex-shrink') || li.classList.contains(
+            'flex-grow')) {
+          const flex = itemController.getElementsByClassName('flex')[0]
+          const input = flex.getElementsByTagName('input')[0]
+          input.value = this._getStyle(ele, 'flex')
+        }
+      }
+
+      _getControledNumberInput(ele, propertype) {
+        const li = this._createControlNumberInput(ele, propertype)
+        li.classList.add(propertype)
+        const input = li.getElementsByTagName('input')[0]
+        if (propertype === 'flex-grow' || propertype === 'flex-shrink' || propertype === 'flex-basis') {
+          input.min = 0
+        }
+        let unit = 'px'
+        if (propertype === 'flex-basis') {
+          const select = li.getElementsByTagName('select')[0]
+          select.onchange = (e) => {
+            if (e.currentTarget.value !== 'auto') {
+              input.type = "number"
+              input.value = input.value ? input.value : 0
+              unit = e.currentTarget.value
+              this._setStyle(ele, propertype, input.value + unit)
+            } else {
+              input.type = 'text'
+              input.value = 'auto'
+              this._setStyle(ele, propertype, 'auto')
+            }
+            this._updateFlex(ele, e)
+          }
+        }
+        input.oninput = (e) => {
+          const currentTarget = e.currentTarget
+          let value = currentTarget.value
+          if (propertype === 'flex-basis') {
+            this._setStyle(ele, propertype, value + unit)
+          } else {
+            this._setStyle(ele, propertype, value)
+          }
+          this._updateFlex(ele, e)
+        }
+        return li
+      }
+
+      _getControledInput(ele, propertype) {
+        const li = this._createControlInput(ele, propertype)
+        li.classList.add(propertype)
+        const input = li.getElementsByTagName('input')[0]
+        if (propertype === 'flex') {
+          input.onchange = (e) => {
+            let value = e.currentTarget.value
+            this._setStyle(ele, propertype, value)
+            const parentNode = li.parentNode
+            let flexBasis = parentNode.getElementsByClassName('flex-basis')[0]
+            let flexGrow = parentNode.getElementsByClassName('flex-grow')[0]
+            let flexShrink = parentNode.getElementsByClassName('flex-shrink')[0]
+            flexGrow.getElementsByTagName('input')[0].value = this._getStyle(ele, 'flex-grow')
+            flexShrink.getElementsByTagName('input')[0].value = this._getStyle(ele, 'flex-shrink')
+            let flexBasisProperTypeValue = this._getStyle(ele, 'flex-basis')
+            let flexBasisInput = flexBasis.getElementsByTagName('input')[0]
+            let flexBasisSelect = flexBasis.getElementsByTagName('select')[0]
+            let match = flexBasisProperTypeValue.toString().match(/([.\d]*)(.*)/)
+            if (match[2] === 'auto') {
+              flexBasisInput.type = 'text'
+              flexBasisInput.value = 'auto'
+              flexBasisSelect.value = 'auto'
+            } else {
+              flexBasisInput.type = 'number'
+              flexBasisSelect.value = match[2]
+              flexBasisInput.value = match[1]
+            }
+          }
+        }
+        return li
+      }
+
+      render(propertypes = ["alignSelf"]) {
+        const div = document.createElement("div")
+        div.classList.add(this.name)
+        for (const numberInputPropertype of this.numberInputPropertypes) {
+          div.appendChild(this._getControledNumberInput(this.ele, numberInputPropertype))
+        }
+        for (const inputPropertype of this.inputPropertypes) {
+          div.appendChild(this._getControledInput(this.ele, inputPropertype))
+        }
+        for (const propertype of propertypes) {
+          let ele
+          let propertypeValues = this[propertype]
+          ele = this._getControledSelect(this.ele, propertype)
+          div.appendChild(ele)
+        }
+        return div
+      }
+    }
+
+    const wrappers = document.getElementsByClassName("wrapper")
+    for (const wrapper of wrappers) {
+      const containerController = new ContainerController(wrapper)
+      containerController.render()
+    }
+    const itemController = new ItemController()
+
+    function itemControlHandler(e) {
+      const target = e.target
+      if (!target.classList.contains("item")) {
+        return false
+      }
+      itemController.ele = target
+      const div = itemController.render()
+      let pageX = e.pageX
+      let pageY = e.pageY
+      let doc = document.documentElement
+      let clientHeight = doc.clientHeight
+      let clientWidth = doc.clientWidth
+      itemController._setStyle(div, "left", pageX - 10 + "px")
+      itemController._setStyle(div, "top", pageY - 10 + "px")
+      document.body.appendChild(div)
+      let boundingClientRect = div.getBoundingClientRect()
+      if (boundingClientRect.right > clientWidth) {
+        let left = parseFloat(itemController._getStyle(div, 'left'))
+        let x = boundingClientRect.right - clientWidth
+        itemController._setStyle(div, 'left', left - x + 'px')
+      }
+      if (boundingClientRect.bottom > clientHeight) {
+        let top = parseFloat(itemController._getStyle(div, 'top'))
+        let y = boundingClientRect.bottom - clientHeight
+        itemController._setStyle(div, 'top', top - y + 'px')
+      }
+      let isLeave = false
+      div.onmouseleave = function (e) {
+        isLeave = true
+        setTimeout(() => {
+          if (isLeave) {
+            div.parentNode.removeChild(div)
+          }
+        }, 500)
+      }
+      div.onmouseenter = function (e) {
+        isLeave = false
+      }
+      div.onmousedown = function (e) {
+        let rectBounding = div.getBoundingClientRect()
+        let x = e.clientX - rectBounding.left
+        let y = e.clientY - rectBounding.top
+        div.onmousemove = function (e) {
+          let clientX = e.clientX
+          let clientY = e.clientY
+          let pageX = e.pageX
+          let pageY = e.pageY
+          itemController._setStyle(div, 'top', pageY - y + 'px')
+          itemController._setStyle(div, 'left', pageX - x + 'px')
+        }
+        div.onmouseup = function (e) {
+          div.onmousemove = null
+        }
+      }
+    }
+    document.documentElement.addEventListener(
+      "click",
+      itemControlHandler,
+      false
+    )
+  </script>
+</body>
+
+</html>

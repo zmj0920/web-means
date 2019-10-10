@@ -1,0 +1,74 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CodePen - 【iCSS：行为】使用+或~美化选项框</title>
+    <link rel="stylesheet" href="./reset.css">
+    <style>
+        .beauty-selection {
+            display: flex;
+        }
+
+        .beauty-selection li {
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+        }
+
+        .beauty-selection li:first-child {
+            margin-left: 0;
+        }
+
+        .beauty-selection input:checked+label {
+            background-color: #f90;
+        }
+
+        .beauty-selection label {
+            margin-right: 5px;
+            padding: 2px;
+            border: 1px solid #f90;
+            border-radius: 100%;
+            width: 18px;
+            height: 18px;
+            background-clip: content-box;
+            cursor: pointer;
+            transition: all 300ms;
+        }
+
+        .beauty-selection label:hover {
+            border-color: #09f;
+            background-color: #09f;
+            box-shadow: 0 0 7px #09f;
+        }
+
+        .beauty-selection span {
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body translate="no">
+    <div class="bruce flex-ct-x">
+        <ul class="beauty-selection">
+            <li>
+                <input type="radio" name="radioName" id="fed-engineer" hidden="">
+                <label for="fed-engineer"></label>
+                <span>前端工程师</span>
+            </li>
+            <li>
+                <input type="radio" name="radioName" id="bed-engineer" hidden="">
+                <label for="bed-engineer"></label>
+                <span>后端工程师</span>
+            </li>
+            <li>
+                <input type="radio" name="radioName" id="fsd-engineer" hidden="">
+                <label for="fsd-engineer"></label>
+                <span>全栈工程师</span>
+            </li>
+        </ul>
+    </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CodePen - 【iCSS：行为】使用transform模拟视差滚动</title>
+    <link rel="stylesheet" href="./reset.css">
+    <style>
+        .bruce {
+            overflow: auto;
+            -webkit-perspective: 1px;
+            perspective: 1px;
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+        }
+
+        .bruce p {
+            height: 300px;
+            line-height: 300px;
+            text-align: center;
+            font-size: 20px;
+            color: #f66;
+        }
+
+        .parallax-scrolling {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 1000px;
+            background: url("https://yangzw.vip/static/codepen/bg.jpg") no-repeat center fixed;
+        }
+
+        .parallax-scrolling li {
+            width: 500px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 60px;
+        }
+
+        .parallax-scrolling li:nth-child(1) {
+            color: #f66;
+            -webkit-transform: translateZ(-1px);
+            transform: translateZ(-1px);
+        }
+
+        .parallax-scrolling li:nth-child(2) {
+            color: #09f;
+            -webkit-transform: translateZ(-2px);
+            transform: translateZ(-2px);
+        }
+
+        .parallax-scrolling li:nth-child(3) {
+            color: #3c9;
+            -webkit-transform: translateZ(-3px);
+            transform: translateZ(-3px);
+        }
+    </style>
+</head>
+
+<body translate="no">
+    <div class="bruce">
+        <ul class="parallax-scrolling">
+            <li>translateZ(-1px)</li>
+            <li>translateZ(-2px)</li>
+            <li>translateZ(-3px)</li>
+        </ul>
+        <p>内容</p>
+        <ul class="parallax-scrolling">
+            <li>translateZ(-1px)</li>
+            <li>translateZ(-2px)</li>
+            <li>translateZ(-3px)</li>
+        </ul>
+    </div>
+
+
+</body>
+
+</html>
