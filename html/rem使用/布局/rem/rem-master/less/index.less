@@ -1,0 +1,248 @@
+@import './variable.less';
+@import './reset.less';
+@import './adapter.less';
+
+body{
+	background-color:@bgColor;
+}
+.payAns{
+	width:100%;
+	margin:0 auto;
+	
+}
+/*头部*/
+header{
+	width:100%;
+	height:88rem/30;
+	line-height:88rem/30;
+	  background-color: @headColor;
+	  padding:0 26rem/30;
+	  box-sizing:border-box;
+
+//头部
+.back{
+	display:block;
+	float:left;
+	width:23rem/30;
+	height:34rem/30;
+	background:url('../images/back.png');
+	line-height:38rem/30;
+	position:absolute;
+	top:26rem/30;
+	left:26rem/30 ;
+
+	background-size:22rem/30 32rem/30;
+}
+a{
+	display:block;
+	float:left;
+	font-size:33rem/30;
+	font-family:"microsoft yehei";
+	margin-left:53rem/30;
+	color:@white;
+	
+
+}
+h3{
+	float:left;
+	color:@white;
+	font-size:38rem/30;
+	margin-left:192rem/30;
+}
+.more{
+	float:right;
+}
+
+}
+
+/*内容区域*/
+main{
+	background-color:@bgColor;
+	padding:21rem/30 33rem/30;
+	box-sizing:border-box;
+
+	.banner{
+	background-size:680rem/30 243rem/30;
+
+	position:relative;
+
+	img{
+	width:100%;
+	height:243rem/30;
+	}
+
+	.pic{
+	position:absolute;
+	left:26rem/30;
+	top:35rem/30;
+	display:block;
+		width:124rem/30;
+		height:120rem/30;
+		background:url('../images/sprite_01.png');
+		background-position:0 -33rem/30;
+		background-size:150rem/30 160rem/30;
+	}
+
+	h4{
+	top:37rem/30;
+	left:188rem/30;
+	position:absolute;
+	color:@white;
+	font-family:"microsoft yehei";
+	font-size:28rem/30;
+	font-weight:700;
+
+	}
+
+	p{
+	position:absolute;
+	top:90rem/30;
+	left:188rem/30;
+	color:@white;
+	font-size:26rem/30;
+	line-height:46rem/30;
+
+	}
+	.p{
+	position:absolute;
+	left:44rem/30;
+	top:183rem/30;
+	line-height:46rem/30;
+	}
+
+	.ewm{
+		position:absolute;
+		top:33rem/30;
+		right:116rem/30;
+		text-align:center;
+
+		i{
+		display:block;
+		width:42rem/30;
+		height:42rem/30;
+		background:url("../images/sprite_01.png");
+		background-position:-20rem/30 0;
+		background-size:150rem/30 169rem/30;
+
+		}
+		span{
+		color:@white;
+		font-size:22rem/30;
+		}
+	}
+.bianji{
+		position:absolute;
+		top:33rem/30;
+		right:29rem/30;
+		text-align:center;
+
+
+		i{
+		display:block;
+		width:42rem/30;
+		height:42rem/30;
+		background:url("../images/sprite_01.png");
+		background-position:-62rem/30 0;
+		background-size:150rem/30 169rem/30;
+
+		}
+		span{
+		color:@white;
+		font-size:22rem/30;
+		}
+	}
+
+	}
+
+
+//提示栏
+	.tips,.tip_icon,.how{
+		border:1px solid @border;
+		text-align:left;
+		padding:35rem/30 41rem/30;
+		margin:22rem/30 0;
+		box-sizing:border-box;
+		background-color:@white;
+		border-radius:5px;
+		font-weight:700;
+	}
+
+	p{
+	line-height:51rem/30;
+	color:@fontColor;
+	font-size:24rem/30;
+	font-family:"microsoft yehei";
+	}
+
+//icon图标
+.icon{
+	width:100%;
+	font-size:0;
+
+	li{
+	width:25%;
+	height:105rem/30;
+	display:inline-block;
+	text-align:center;
+	margin-bottom:10rem/30;
+
+	p{
+	color:@fontColor;
+	font-weight:700;
+	}
+
+	}
+
+}//icon结束
+
+.how {
+	overflow:hidden;
+	div{
+	float:left;
+	}
+	p{
+	float:left;
+	color:@fontColor;
+	font-size:28rem/30;
+	margin-left:28rem/30;
+	line-height:60rem/30;
+	}
+	.right{
+	float:right;
+	}
+}
+
+
+
+}
+
+//footer
+footer {
+	position:fixed;
+	bottom:0;
+	left:0;
+	width:100%;
+	background-color:@white;
+	border:1px solid #ccc;
+	padding:15rem/30 0;
+	box-sizing:border-box;
+	z-index:11;
+}
+.footer{
+	display:flex;
+	width:100%;
+	overflow:hidden;
+	text-align:center;
+
+	li{
+	flex:1;
+	width:25%;
+
+	p{
+	font-size:24rem/30;
+	color:@fontColor;
+	margin:10rem/30 0 0;
+	}
+
+	}
+}

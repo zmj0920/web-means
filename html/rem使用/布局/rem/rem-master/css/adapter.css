@@ -1,0 +1,15 @@
+@media screen and (width: 320px) {
+  html {
+    font-size: calc 12.8px;
+  }
+}
+@media screen and (width: 360px) {
+  html {
+    font-size: calc 14.4px;
+  }
+}
+@media screen and (width: 375px) {
+  html {
+    font-size: calc 15px;
+  }
+}

@@ -1,0 +1,312 @@
+/*
+* @Author: admin
+* @Date:   2017-11-21 21:24:29
+* @Last Modified by:   admin
+* @Last Modified time: 2017-11-21 21:24:33
+*/
+/*初始化*/
+body,
+ul,
+ol,
+dl,
+dd,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+button,
+select {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-size: 12px;
+  font-family: arial,microsoft yahei;
+  color: #666;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: #666;
+}
+a:hover {
+  color: #e01222;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+}
+em,
+i {
+  font-style: normal;
+}
+input,
+img,
+button {
+  border: 0 none;
+}
+img {
+  vertical-align: middle;
+}
+input,
+button {
+  outline-style: none;
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  line-height: 0;
+  visibility: hidden;
+  clear: both;
+}
+.clearfix:after {
+  zoom: 1;
+}
+.w {
+  width: 1190px;
+  margin: 0 auto;
+}
+@font-face {
+  font-family: "iconfont";
+  src: url('../iconfont/iconfont.eot');
+  src: url('../iconfont/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('../iconfont/iconfont.woff') format('woff'), /* chrome, firefox */ url('../iconfont/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/ url('../iconfont/iconfont.svg#iconfont') format('svg');
+  
+  /* IE9*/
+  /* iOS 4.1- */
+}
+@media screen and (width: 320px) {
+  html {
+    font-size: calc 12.8px;
+  }
+}
+@media screen and (width: 360px) {
+  html {
+    font-size: calc 14.4px;
+  }
+}
+@media screen and (width: 375px) {
+  html {
+    font-size: calc 15px;
+  }
+}
+body {
+  background-color: #f5f5f5;
+}
+.payAns {
+  width: 100%;
+  margin: 0 auto;
+}
+/*头部*/
+header {
+  width: 100%;
+  height: 2.93333333rem;
+  line-height: 2.93333333rem;
+  background-color: #1b1a20;
+  padding: 0 0.86666667rem;
+  box-sizing: border-box;
+}
+header .back {
+  display: block;
+  float: left;
+  width: 0.76666667rem;
+  height: 1.13333333rem;
+  background: url('../images/back.png');
+  line-height: 1.26666667rem;
+  position: absolute;
+  top: 0.86666667rem;
+  left: 0.86666667rem;
+  background-size: 0.73333333rem 1.06666667rem;
+}
+header a {
+  display: block;
+  float: left;
+  font-size: 1.1rem;
+  font-family: "microsoft yehei";
+  margin-left: 1.76666667rem;
+  color: #ffffff;
+}
+header h3 {
+  float: left;
+  color: #ffffff;
+  font-size: 1.26666667rem;
+  margin-left: 6.4rem;
+}
+header .more {
+  float: right;
+}
+/*内容区域*/
+main {
+  background-color: #f5f5f5;
+  padding: 0.7rem 1.1rem;
+  box-sizing: border-box;
+}
+main .banner {
+  background-size: 22.66666667rem 8.1rem;
+  position: relative;
+}
+main .banner img {
+  width: 100%;
+  height: 8.1rem;
+}
+main .banner .pic {
+  position: absolute;
+  left: 0.86666667rem;
+  top: 1.16666667rem;
+  display: block;
+  width: 4.13333333rem;
+  height: 4rem;
+  background: url('../images/sprite_01.png');
+  background-position: 0 -1.1rem;
+  background-size: 5rem 5.33333333rem;
+}
+main .banner h4 {
+  top: 1.23333333rem;
+  left: 6.26666667rem;
+  position: absolute;
+  color: #ffffff;
+  font-family: "microsoft yehei";
+  font-size: 0.93333333rem;
+  font-weight: 700;
+}
+main .banner p {
+  position: absolute;
+  top: 3rem;
+  left: 6.26666667rem;
+  color: #ffffff;
+  font-size: 0.86666667rem;
+  line-height: 1.53333333rem;
+}
+main .banner .p {
+  position: absolute;
+  left: 1.46666667rem;
+  top: 6.1rem;
+  line-height: 1.53333333rem;
+}
+main .banner .ewm {
+  position: absolute;
+  top: 1.1rem;
+  right: 3.86666667rem;
+  text-align: center;
+}
+main .banner .ewm i {
+  display: block;
+  width: 1.4rem;
+  height: 1.4rem;
+  background: url("../images/sprite_01.png");
+  background-position: -0.66666667rem 0;
+  background-size: 5rem 5.63333333rem;
+}
+main .banner .ewm span {
+  color: #ffffff;
+  font-size: 0.73333333rem;
+}
+main .banner .bianji {
+  position: absolute;
+  top: 1.1rem;
+  right: 0.96666667rem;
+  text-align: center;
+}
+main .banner .bianji i {
+  display: block;
+  width: 1.4rem;
+  height: 1.4rem;
+  background: url("../images/sprite_01.png");
+  background-position: -2.06666667rem 0;
+  background-size: 5rem 5.63333333rem;
+}
+main .banner .bianji span {
+  color: #ffffff;
+  font-size: 0.73333333rem;
+}
+main .tips,
+main .tip_icon,
+main .how {
+  border: 1px solid #909090;
+  text-align: left;
+  padding: 1.16666667rem 1.36666667rem;
+  margin: 0.73333333rem 0;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border-radius: 5px;
+  font-weight: 700;
+}
+main p {
+  line-height: 1.7rem;
+  color: #3f3f3f;
+  font-size: 0.8rem;
+  font-family: "microsoft yehei";
+}
+main .icon {
+  width: 100%;
+  font-size: 0;
+}
+main .icon li {
+  width: 25%;
+  height: 3.5rem;
+  display: inline-block;
+  text-align: center;
+  margin-bottom: 0.33333333rem;
+}
+main .icon li p {
+  color: #3f3f3f;
+  font-weight: 700;
+}
+main .how {
+  overflow: hidden;
+}
+main .how div {
+  float: left;
+}
+main .how p {
+  float: left;
+  color: #3f3f3f;
+  font-size: 0.93333333rem;
+  margin-left: 0.93333333rem;
+  line-height: 2rem;
+}
+main .how .right {
+  float: right;
+}
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  padding: 0.5rem 0;
+  box-sizing: border-box;
+  z-index: 11;
+}
+.footer {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+}
+.footer li {
+  flex: 1;
+  width: 25%;
+}
+.footer li p {
+  font-size: 0.8rem;
+  color: #3f3f3f;
+  margin: 0.33333333rem 0 0;
+}
