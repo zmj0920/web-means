@@ -37,6 +37,7 @@ func test1() {
 
 //连续位常量
 func test2() {
+	// iota常量计数器
 	const (
 		Readable = 1 << iota
 		Writable
@@ -51,7 +52,7 @@ func test2() {
 
 //连续常量赋值
 func test3() {
-	//连续常量
+	// iota常量计数器
 	const (
 		Monday = iota + 1
 		Tuesday
@@ -62,6 +63,7 @@ func test3() {
 
 //特殊
 func test4() {
+	// iota常量计数器
 	const (
 		Test1 = iota
 		Test2 = iota
