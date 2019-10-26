@@ -7,7 +7,9 @@ import (
 )
 
 func main() {
-	test()
+	// testFn()
+	// testVarParam()
+	testDefer()
 }
 
 //多返回值函数
@@ -36,11 +38,44 @@ func slowFun(op int) int {
 	return op
 }
 
-func test() {
+//测试函数
+func testFn() {
 	a, b := returnMultiValues()
 	fmt.Println(a, b)
 	//传入一个函数
 	tsSF := timeSpent(slowFun)
 	//传10返回10
-	fmt.Println(tsSF(10))
+	fmt.Println(tsSF(20))
+}
+
+//可变参数
+func sum(ops ...int) int {
+	ret := 0
+	for _, op := range ops {
+		ret += op
+	}
+	return ret
+}
+
+//可变长参数测试
+func testVarParam() {
+	fmt.Println(sum(1, 2, 3, 4))
+	fmt.Println(sum(1, 2, 3, 4, 5))
+}
+
+func clear() {
+	fmt.Println("Clear resources.")
+}
+
+//defer函数延迟执行 释放放资源释放锁使用
+func testDefer() {
+	defer clear()
+
+	defer func() {
+		fmt.Println(666)
+	}()
+
+	fmt.Println("Start")
+	panic("err") //defer仍会执⾏
+	// fmt.Println("End")
 }
