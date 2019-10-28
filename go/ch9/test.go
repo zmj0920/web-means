@@ -63,6 +63,8 @@ func testVarParam() {
 	fmt.Println(sum(1, 2, 3, 4, 5))
 }
 
+
+
 func clear() {
 	fmt.Println("Clear resources.")
 }
