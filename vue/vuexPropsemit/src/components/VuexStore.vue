@@ -1,6 +1,7 @@
 <template>
   <div>
     <p>{{this.$store.state.count}}---{{count}}</p>
+    <p>{{this.$store.state.title}}</p>
     <div v-dir1>自定义指令</div>
     <button @click="$store.commit('add',5)">+</button>
     <button @click="reduce">-</button>
@@ -30,14 +31,15 @@ export default {
     init() {
       this.name = "123";
     },
-    // 模板获取Mutations方法 
+    // 模板获取Mutations方法
     ...mapMutations(["add", "reduce"]),
     ...mapActions(["addAction", "reduceAction"])
   },
   computed: {
     //1.通过mapState的对象来赋值
-    ...mapState(["count"]),
-     //2.通过mapState的对象来赋值
+    ...mapState(["count","title"]),
+  
+    //2.通过mapState的对象来赋值
     // ...mapState({
     //   count: state => state.count
     // }),

@@ -13,7 +13,7 @@ export default {
   },
   data() {
     return {
-      childs:'父组件向子组件props传值',
+      childs:'Hello World',
       message: " "
     };
   },
