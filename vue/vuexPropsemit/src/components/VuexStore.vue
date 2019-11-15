@@ -1,9 +1,13 @@
 <template>
   <div>
-    <p>{{this.$store.state.count}}---{{count}}</p>
+    <p>{{count}}</p>
     <p>{{title}}</p>
+    <p>{{list}}</p>
+
+    <p v-for="item in changePeople">{{item.age}}</p>
     <div v-dir1>自定义指令</div>
-    <button @click="$store.commit('add',5)">+</button>
+    <button @click="add(5)">+</button>
+    <!-- <button @click="$store.commit('add',5)">+</button> -->
     <button @click="reduce">-</button>
     <br />
     <button @click="addAction">+</button>
@@ -14,7 +18,7 @@
 <script>
 import { mapState, mapMutations, mapGetters, mapActions } from "vuex";
 export default {
-   name: 'vuexstore',
+  name: "vuexstore",
   data() {
     return {
       name: "123456"
@@ -34,22 +38,37 @@ export default {
     },
     // 模板获取Mutations方法
     //mapMutations和mapActions使用的时候只能在methods中调用否则报错
-    ...mapMutations(["add", "reduce"]),
-    ...mapActions(["addAction", "reduceAction"])
+    //$store.commit('add',5)
+    ...mapMutations(["add", "reduce", "addlist"]),
+    ...mapActions(["addAction", "reduceAction", "actionslist"]),
+    addList() {
+      // this.$store.commit("addlist", { name: "zmj" });
+      this.addlist({ name: "zmj1" });
+    },
+    actionsList() {
+      this.actionslist({ name: "123" });
+    }
   },
+  created() {},
   computed: {
     // mapState和mapGetter的使用只能在computed计算属性中
     //1.通过mapState的对象来赋值
-    ...mapState(["count","title"]),
-  
+    //this.$store.state.count
+    ...mapState(["count", "title", "list"]),
+
     //2.通过mapState的对象来赋值
     // ...mapState({
     //   count: state => state.count
     // }),
-    ...mapGetters(["count"])
+
+    //this.$store.getters.count
+    ...mapGetters(["count", "changePeople"])
   },
   mounted() {
     this.init();
+    this.addList();
+    //异步执行
+    this.actionsList()
   },
   directives: {
     // 指令名称

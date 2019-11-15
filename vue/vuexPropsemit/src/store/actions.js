@@ -7,5 +7,10 @@ export default {
     },
     reduceAction({ commit }) {
         commit('reduce')
+    },
+    actionslist({ commit },data) {
+        setTimeout(function () {
+            commit("addlist",data)
+        },2000)
     }
 }
