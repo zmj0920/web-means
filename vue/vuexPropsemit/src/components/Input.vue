@@ -54,9 +54,13 @@
       <input type="text" ref="msgText" v-model="msg" />
       <button @click="getElement">获取元素值</button>
     </p>
+    <p>
+     ref获取子组件的input值  <RefInput ref="childComponent"></RefInput>
+    </p>
   </div>
 </template>
 <script>
+import RefInput from "./RefInput";
 export default {
   data() {
     return {
@@ -69,12 +73,18 @@ export default {
       msg: "Hello ref"
     };
   },
+  components:{
+    RefInput
+  },
   mounted() {
     console.log("mounted: " + this.$refs.msgText.value);
   },
-  methods:{
+  methods: {
     getElement() {
       console.log(this.$refs.msgText.value);
+      console.log(
+        "子组件 input 输入框的值为：" + this.$refs.childComponent.local
+      );
     }
   }
 };
