@@ -2,8 +2,6 @@
 //在组件中调用方式
 // <button @click="$store.commit('add')">+</button>
 // <button @click="$store.commit('reduce')">-</button>
-
-
 export default {
     add(state, n) {
         state.count += n;

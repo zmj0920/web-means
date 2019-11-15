@@ -3,7 +3,6 @@
     <p>{{count}}</p>
     <p>{{title}}</p>
     <p>{{list}}</p>
-
     <p v-for="item in changePeople">{{item.age}}</p>
     <div v-dir1>自定义指令</div>
     <button @click="add(5)">+</button>
