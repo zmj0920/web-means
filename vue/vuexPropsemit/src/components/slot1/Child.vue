@@ -1,7 +1,7 @@
 <template>
     <div class="child">
         <h3>这里是子组件</h3>
-        <slot></slot>
+        <slot name="header"v-bind:data="data"></slot>
     </div>
 </template>
 
@@ -9,7 +9,7 @@
 export default {
     data: function(){
         return {
-            msg: ''
+            data: ['zhangsan','lisi','wanwu','zhaoliu','tianqi','xiaoba']
         }
     },
     computed: {

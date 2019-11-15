@@ -2,8 +2,8 @@
   <div class="father">
     <h3>这里是父组件</h3>
     <!--第一次使用：用flex展示数据-->
-    <child>
-      <template slot-scope="user">
+    <child >
+      <template v-slot="user">
         <div class="tmpl">
           <span v-for="item in user.data">{{item}}</span>
         </div>
@@ -13,7 +13,7 @@
 
     <!--第二次使用：用列表展示数据-->
     <child>
-      <template slot-scope="user">
+      <template v-slot="user">
         <ul>
           <li v-for="item in user.data">{{item}}</li>
         </ul>
@@ -23,7 +23,7 @@
 
     <!--第三次使用：直接显示数据-->
     <child>
-      <template slot-scope="user">
+      <template v-slot="user">
        {{user.data}}
       </template>
     </child>
