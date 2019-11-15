@@ -48,9 +48,14 @@
       </select>
       <span>Selected: {{ selected }}</span>
     </p>
+
+    <p>
+      ref使用 ：
+      <input type="text" ref="msgText" v-model="msg" />
+      <button @click="getElement">获取元素值</button>
+    </p>
   </div>
 </template>
-
 <script>
 export default {
   data() {
@@ -60,8 +65,17 @@ export default {
       checkbox: "",
       checkedNames: [],
       picked: "",
-      selected:""
+      selected: "",
+      msg: "Hello ref"
     };
+  },
+  mounted() {
+    console.log("mounted: " + this.$refs.msgText.value);
+  },
+  methods:{
+    getElement() {
+      console.log(this.$refs.msgText.value);
+    }
   }
 };
 </script>
