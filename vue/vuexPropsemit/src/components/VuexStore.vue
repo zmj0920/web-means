@@ -1,7 +1,7 @@
 <template>
   <div>
     <p>{{this.$store.state.count}}---{{count}}</p>
-    <p>{{this.$store.state.title}}</p>
+    <p>{{title}}</p>
     <div v-dir1>自定义指令</div>
     <button @click="$store.commit('add',5)">+</button>
     <button @click="reduce">-</button>
@@ -14,6 +14,7 @@
 <script>
 import { mapState, mapMutations, mapGetters, mapActions } from "vuex";
 export default {
+   name: 'vuexstore',
   data() {
     return {
       name: "123456"
@@ -32,10 +33,12 @@ export default {
       this.name = "123";
     },
     // 模板获取Mutations方法
+    //mapMutations和mapActions使用的时候只能在methods中调用否则报错
     ...mapMutations(["add", "reduce"]),
     ...mapActions(["addAction", "reduceAction"])
   },
   computed: {
+    // mapState和mapGetter的使用只能在computed计算属性中
     //1.通过mapState的对象来赋值
     ...mapState(["count","title"]),
   
