@@ -70,7 +70,8 @@ export default {
       checkedNames: [],
       picked: "",
       selected: "",
-      msg: "Hello ref"
+      msg: "Hello ref",
+      datatime:""
     };
   },
   components:{
