@@ -23,3 +23,21 @@ func getThreads(writer http.ResponseWriter, request *http.Request) {
 	}
 	api_ret_json(writer, request, js)
 }
+
+
+func getUsers(writer http.ResponseWriter, request *http.Request) {
+	request.ParseForm()
+	pageNum := request.FormValue("pageNum")
+	pageSize := request.FormValue("pageSize")
+	ts, err := data.Userquery(pageNum,pageSize)
+	if err != nil {
+		api_ret_err(writer, request, []byte("Get threads fail"))
+		return
+	}
+	js, err := json.Marshal(ts)
+	if err != nil {
+		api_ret_err(writer, request, []byte("Marshal threads fail"))
+		return
+	}
+	api_ret_json(writer, request, js)
+}

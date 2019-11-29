@@ -9,9 +9,11 @@ func main() {
 	setup()
 	// 路由
 	mux := http.NewServeMux()
-
 	// 获取文章列表
 	mux.HandleFunc("/api/threads", getThreads)
+
+	mux.HandleFunc("/api/users", getUsers)
+	
 	// 启动服务器
 	server := &http.Server{
 		Addr:           Config.ListeningAddress,
