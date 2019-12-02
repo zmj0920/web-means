@@ -51,5 +51,11 @@
           [disabled]="!profileForm.valid">提交</button>
       </nz-form-control>
     </nz-form-item>
+  <nz-form-item>
+    <nz-form-control [nzSpan]="24">
+      <button  nz-input  class="login-form-button" (click)="updateProfile()">更新</button>
+    </nz-form-control>
+  </nz-form-item>
+
   </form>
 </div>
