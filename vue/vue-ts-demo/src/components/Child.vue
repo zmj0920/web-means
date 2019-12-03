@@ -65,9 +65,9 @@ export default class Child extends Vue {
   @Model("change", { type: Boolean }) readonly checked!: boolean;
 
   @Emit("change")
-  change(e: MouseEvent) {
+  change() {
     // alert(e.isTrusted);
-    console.log(e.target.checked);
+   //  console.log(e.target.checked);
   }
 
   @Emit("demo-log")
