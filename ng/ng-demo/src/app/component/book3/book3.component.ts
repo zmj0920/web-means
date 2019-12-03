@@ -1,7 +1,8 @@
 import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { filter, map  } from 'rxjs/internal/operators';
-import {Observable,Observer} from 'rxjs'
+import { Observable, Observer } from 'rxjs';
+import { BookService } from '../../service/book.service';
 @Component({
   selector: 'app-book3',
   templateUrl: './book3.component.html',
@@ -12,6 +13,7 @@ export class Book3Component implements OnInit {
   form: FormGroup;
   constructor(
     private formBuilder: FormBuilder,
+    private bookService: BookService
   ) { }
 
 
@@ -26,6 +28,12 @@ export class Book3Component implements OnInit {
   del(data){
     this.deleteEvent.emit(data)
   }
+
+  sendMessage() {
+    this.bookService.sendMessage('显示成功');
+  }
+
+
   ngOnInit() {
     
     this.form = this.formBuilder.group({

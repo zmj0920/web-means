@@ -23,7 +23,8 @@
     </tr>
   </tbody>
 </table>
+{{alertMsg}}
 <button id="searchBox">监听</button>
-<app-book3 myTitle="父组件传值：hello" account-id="4747"  (deleteEvent)="rcvMsg($event)"></app-book3>
+<app-book3 myTitle="父组件传值：hello" account-id="4747" (value)="alertMsg"  (deleteEvent)="rcvMsg($event)"></app-book3>
 
 <app-profile-editor></app-profile-editor>

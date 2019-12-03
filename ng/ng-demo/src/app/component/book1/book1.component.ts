@@ -3,7 +3,7 @@ import { AppStoreModule } from '@store/store.module';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { Subscription, of} from 'rxjs';
+import { Subscription, of, Observable, from, observable} from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 
 interface Lengthwise {
@@ -25,19 +25,8 @@ export class Book1Component implements OnInit {
     price: ['', Validators.required],
     createAt: Date.now()
   });
-  private subscription: Subscription; // 订阅
+  private subscription: Subscription;
   constructor(private fb: FormBuilder, private store: Store<AppStoreModule>) { }
-
- someValue = 123;
-
- strLength: number = (this.someValue as unknown  as string).length;
-
-
-  loggingIdentity<T extends Lengthwise>(arg: T[]): T[] {
-    console.log(arg.length);
-    return arg;
-  }
-
   ngOnInit() {
     // this.loggingIdentity({ length: 10, value: 3 });
     this.subscription = of('桃子', '鲤鱼').pipe(
@@ -45,21 +34,24 @@ export class Book1Component implements OnInit {
       map(v => v + '罐头')
     ).subscribe(console.log);
 
+   
+    
+    const num$ = of(1, 2, 3, 4)
 
-    this.profileForm.valueChanges.pipe(
-      filter(() => this.profileForm.valid) ,
-      map(data => {
-        data.lastTime = new Date();
-        return data;
-      })
-    ).subscribe(res => console.log(res));
+    Observable.create(observable => {
+      
+    })
+    
+    const source$ = from([1, 2, 3]);
+    source$.subscribe(console.log);
   }
-
+ // alertMsg:string
   // tslint:disable-next-line: use-lifecycle-interface
   ngOnDestroy() {
     // 取消订阅
     this.subscription.unsubscribe();
   }
+ 
   public submit(): void {
     if (this.bookName && this.author && this.price) {
       this.store.dispatch(addBook({ book: { bookName: this.bookName, author: this.author, price: this.price, createAt: Date.now() } }));
