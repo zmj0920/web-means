@@ -1,10 +1,10 @@
 import { addBook } from '@store/actions';
 import { AppStoreModule } from '@store/store.module';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Attribute } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { Subscription, of, Observable, from, observable} from 'rxjs';
-import { filter, map } from 'rxjs/operators';
+import { Subscription, of, Observable, from, timer, Subject, interval} from 'rxjs';
+import { filter, map, take, multicast, refCount, first} from 'rxjs/operators';
 
 interface Lengthwise {
   num: number;
@@ -15,19 +15,29 @@ interface Lengthwise {
   styleUrls: ['./book1.component.css']
 })
 export class Book1Component implements OnInit {
-  public bookName: string;
-  public author: string;
-  public price: number;
-  public name: Lengthwise;
+   bookName: string;
+   author: string;
+   price: number;
+   name: Lengthwise;
+  title: string;
   profileForm = this.fb.group({
     bookName: ['', Validators.required],
     author: ['', Validators.required],
     price: ['', Validators.required],
     createAt: Date.now()
   });
+
   private subscription: Subscription;
-  constructor(private fb: FormBuilder, private store: Store<AppStoreModule>) { }
+
+  constructor(@Attribute('title') title: string, private fb: FormBuilder, private store: Store<AppStoreModule>) {
+    this.title = title; 
+    console.log(this.title)
+   }
+  demo1() {
+    first()(of(1, 2, 3)).subscribe((v) => console.log(`value: ${v}`));
+  }
   ngOnInit() {
+    this.demo1()
     // this.loggingIdentity({ length: 10, value: 3 });
     this.subscription = of('桃子', '鲤鱼').pipe(
       filter(v => v === '桃子'),
@@ -36,14 +46,14 @@ export class Book1Component implements OnInit {
 
    
     
-    const num$ = of(1, 2, 3, 4)
-
-    Observable.create(observable => {
-      
-    })
+    // const num$ = of(1, 2, 3, 4).pipe(
+    //   map((item) => console.log(item)),
+    // )
+    // num$.subscribe();
+  
     
-    const source$ = from([1, 2, 3]);
-    source$.subscribe(console.log);
+    // const source$ = from([1, 2, 3]);
+    // source$.subscribe(console.log);
   }
  // alertMsg:string
   // tslint:disable-next-line: use-lifecycle-interface
