@@ -17,11 +17,6 @@ function AppRouter() {
       <div className="mainDiv">
         <div className="leftNav">
           <h3>导航</h3>
-          {/* <ul>
-                    <li> <Link to="/">博客首页</Link> </li>
-                    <li><Link to="/video/">视频教程</Link> </li>
-                    <li><Link to="/workplace/">职场技能</Link> </li>
-                </ul> */}
           <ul>
             {
               routeConfig.map((item, index) => {
@@ -31,9 +26,6 @@ function AppRouter() {
           </ul>
         </div>
         <div className="rightMain">
-          {/* <Route path="/" exact component={Index} />
-          <Route path="/video/" exact component={Video} />
-          <Route path="/workplace/" component={Workplace} /> */}
           {
             routeConfig.map((item, index) => {
               return (<Route key={index} exact={item.exact} path={item.path} component={item.component} />)
