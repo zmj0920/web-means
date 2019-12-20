@@ -1,4 +1,4 @@
-import {  delBook } from '@store/actions';
+import { delBook } from '@store/actions';
 import { BookType } from '../../store/models';
 import { AppStoreModule } from '@store/store.module';
 import { Component, OnInit } from '@angular/core';
@@ -19,19 +19,19 @@ export class Book2Component implements OnInit {
       this.bookList = item;
     })
   }
- 
+
   ngOnInit() {
     // 消息提示 从service获取消息内容
     this.bookService.getMessage().subscribe(value => {
       this.alertMsg = value;
     })
   }
-  
-   delBook(book: BookType): void {
+
+  delBook(book: BookType): void {
     this.store.dispatch(delBook({ book }));
-   }
-  rcvMsg(msg){
-       console.log(`父组件接收子组件${msg}`)
   }
- 
+  rcvMsg(msg) {
+    console.log(`父组件接收子组件${msg}`)
+  }
+
 }

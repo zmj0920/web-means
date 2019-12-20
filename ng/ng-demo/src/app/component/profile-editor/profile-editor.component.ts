@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { Validators } from '@angular/forms';
-import { FormArray } from '@angular/forms';
+import { FormBuilder,FormArray ,Validators} from '@angular/forms';
+
 
 @Component({
   selector: 'app-profile-editor',
