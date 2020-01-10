@@ -41,8 +41,7 @@ export default class Child extends Vue {
   //感叹号是非null和非undefined的类型断言
   @Prop({ default: "msg默认值" }) private msg!: string;
 
-  @PropSync("name", { type: String })
-  syncedName!: string;
+  @PropSync("name", { type: String }) syncedName!: string;
 
   public setSyncedName() {
     this.syncedName = "delete";

@@ -1,0 +1,9 @@
+.class1 {
+    color: blue;
+    :global(.class2) {
+
+        background: red;
+
+    }
+
+}
