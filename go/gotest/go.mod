@@ -1,6 +1,6 @@
 module github.com/zmj/gotest
 
-go 1.13.3
+go 1.15.5
 
 require (
 	github.com/go-sql-driver/mysql v1.4.1
